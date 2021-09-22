@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonJS",
+    "target": "es2015",
+    "lib": ["dom", "es2015", "es2017"],
+    "jsx": "react",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*", "src/*/index"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "coverage"],
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,19 @@
+{
+  "packages": ["packages/*", "projects/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "registry": "https://registry.npmjs.org/",
+  "useWorkspaces": true,
+  "command": {
+    "version": { "exact": true },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
+    },
+    "publish": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish",
+      "ignoreChanges": ["**/stories/**", "**/tests/**"],
+      "allowBranch": "master"
+    }
+  }
+}

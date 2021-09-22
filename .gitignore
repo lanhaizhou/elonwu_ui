@@ -1,0 +1,11 @@
+.vscode
+node_modules
+*.log
+.DS_Store
+.vscode
+coverage
+dist
+storybook-static
+cache
+stats.json
+projects
