@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Bar, Chart } from '..';
+import { Card } from '@elonwu/web-card';
 
 export default {
   title: 'Components/Chart/Bar',
@@ -23,7 +24,7 @@ export const BarStory = () => (
 );
 
 export const MobileBarStory = () => (
-  <div>
+  <Card style={{ width: 275, margin: 'auto' }}>
     <Chart
       chartKey="Story-MobileBar"
       dataSource={[
@@ -58,5 +59,5 @@ export const MobileBarStory = () => (
         chart.axis(false);
       }}
     />
-  </div>
+  </Card>
 );

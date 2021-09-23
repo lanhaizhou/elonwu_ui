@@ -21,7 +21,7 @@ export default {
     docs: {
       // 组件整体描述
       description: {
-        component: '按钮',
+        component: '卡片',
       },
       // 代码示例
       source: {

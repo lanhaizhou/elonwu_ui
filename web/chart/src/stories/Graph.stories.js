@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Graph } from '..';
+import { Card } from '@elonwu/web-card';
 
 export default {
   title: 'Components/Chart/Graph',

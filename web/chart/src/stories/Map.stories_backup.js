@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Map } from '..';
+import { Card } from '@elonwu/web-card';
 
 export default {
   title: 'Components/Chart/Map',

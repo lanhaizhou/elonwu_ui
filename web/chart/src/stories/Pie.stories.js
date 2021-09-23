@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Pie } from '..';
+import { Card } from '@elonwu/web-card';
 
 export default {
   title: 'Components/Chart/Pie',
@@ -24,7 +25,7 @@ export const PieStory = () => (
 );
 
 export const MobilePieStory = () => (
-  <div>
+  <Card style={{ width: 275, margin: 'auto' }}>
     <Pie
       chartKey="Story-MobilePie"
       dataSource={[
@@ -41,5 +42,5 @@ export const MobilePieStory = () => (
         chart.legend(false);
       }}
     />
-  </div>
+  </Card>
 );

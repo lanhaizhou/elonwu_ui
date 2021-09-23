@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BarStack, Chart } from '..';
+import { Card } from '@elonwu/web-card';
 
 export default {
   title: 'Components/Chart/BarStack',
@@ -31,7 +32,7 @@ export const BarStackStory = () => (
 );
 
 export const MobileBarStackStory = () => (
-  <div>
+  <Card style={{ width: 275, margin: 'auto' }}>
     <BarStack
       height={240}
       chartKey="Story-MobileBarStack"
@@ -57,5 +58,5 @@ export const MobileBarStackStory = () => (
         chart.axis(false);
       }}
     />
-  </div>
+  </Card>
 );
