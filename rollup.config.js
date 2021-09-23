@@ -3,8 +3,6 @@ import babel from '@rollup/plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import del from 'rollup-plugin-delete';
-
-// import svg from 'rollup-plugin-svg';
 // import external from 'rollup-plugin-peer-deps-external';
 
 const setRollup = (pkg, plugins = []) => ({
@@ -36,7 +34,6 @@ const setRollup = (pkg, plugins = []) => ({
     }),
 
     // external(),
-    // svg({ base64: true }),
   ].concat(plugins),
 });
 
