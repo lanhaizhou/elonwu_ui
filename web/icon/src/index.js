@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import SVG from 'react-inlinesvg';
 import tw, { styled, css } from 'twin.macro';
 
@@ -79,7 +79,17 @@ const IconContainer = styled.span(
       ],
     };
 
-    styles.push(sizes[size] || sizes.md);
+    if (typeof size === 'number') {
+      styles.push(
+        css`
+          width: ${size}px;
+          height: ${size}px;
+        `,
+      );
+    } else {
+      styles.push(sizes[size] || sizes.md);
+    }
+
     styles.push(types[type] || types.fill);
 
     if (round) {
