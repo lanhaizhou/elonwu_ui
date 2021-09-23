@@ -111,9 +111,5 @@ export default {
 };
 
 export const ButtonStory = (args) => {
-  return (
-    <div>
-      <Button {...args} />
-    </div>
-  );
+  return <Button {...args} />;
 };
