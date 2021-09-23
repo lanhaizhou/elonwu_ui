@@ -15,7 +15,7 @@ export function isArray(value) {
 
 // 非空数组
 export function isValidArray(value) {
-  return Array.isArray(value) && value.length > 0;
+  return isArray(value) && value.length > 0;
 }
 
 // 是 undefined 或者 null
