@@ -53,6 +53,8 @@
     "twin.macro": "^2.7.0"
   },
   "devDependencies": {
+    "@antv/data-set": "^0.11.8",
+    "@antv/g2": "^4.1.21",
     "@babel/preset-react": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
