@@ -36,7 +36,7 @@
   },
   "workspaces": [
     "packages/*",
-    "projects/*"
+    "libraries/*"
   ],
   "dependencies": {
     "react": "^17.0.2",
