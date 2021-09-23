@@ -43,7 +43,8 @@
   "dependencies": {
     "@elonwu/web-button": "^0.0.1",
     "@elonwu/web-card": "^0.0.1",
-    "@elonwu/web-text": "^0.0.1"
+    "@elonwu/web-text": "^0.0.1",
+    "@elonwu/web-chart": "^0.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
