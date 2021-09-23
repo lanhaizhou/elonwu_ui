@@ -26,12 +26,12 @@ export default {
       // 代码示例
       source: {
         type: 'code',
-        code: `<Card full>This is a Card</Card>`,
+        code: `<Card full>This is a Card 卡片</Card>`,
       },
     },
   },
 };
 
 export const CardStory = (args) => {
-  return <Card {...args}>This is a Card</Card>;
+  return <Card {...args}>This is a Card 卡片</Card>;
 };
