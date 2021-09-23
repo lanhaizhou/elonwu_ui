@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-icon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "elonwu web-icon",
   "source": "index.js",
@@ -48,8 +48,8 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "twin.macro": "^2.7.0",
-    "react-inlinesvg": "^2.3.0"
+    "react-inlinesvg": "^2.3.0",
+    "twin.macro": "^2.7.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
