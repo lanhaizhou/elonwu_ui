@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/text",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "description": "elonwu text",
   "source": "index.js",
