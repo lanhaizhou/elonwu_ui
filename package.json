@@ -35,7 +35,9 @@
     "lint-staged": "^11.1.2"
   },
   "workspaces": [
-    "packages/*",
+    "web/*",
+    "rn/*",
+    "miniapp/*",
     "libraries/*"
   ],
   "dependencies": {

@@ -1,3 +1,3 @@
-export * from '@elonwu/button';
-export * from '@elonwu/card';
-export * from '@elonwu/text';
+export * from '@elonwu/web-button';
+export * from '@elonwu/web-card';
+export * from '@elonwu/web-text';

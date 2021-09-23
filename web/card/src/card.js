@@ -2,7 +2,7 @@ import tw, { styled, css } from 'twin.macro';
 /**
  *  Card
  */
-const Card = styled.div(({ full = false }) => {
+export const Card = styled.div(({ full = false }) => {
   const styles = [
     tw`inline-block w-auto h-auto mx-auto  p-4`,
     /* 装饰 */
@@ -19,5 +19,3 @@ const Card = styled.div(({ full = false }) => {
 
   return styles;
 });
-
-export default Card;

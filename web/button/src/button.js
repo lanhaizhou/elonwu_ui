@@ -2,7 +2,7 @@ import tw, { styled, css } from 'twin.macro';
 /**
  *  Button
  */
-const Button = styled.button(
+export const Button = styled.button(
   ({ type = 'fill', size = 'md', round = false, block = false }) => {
     const styles = [
       css`
@@ -77,5 +77,3 @@ const Button = styled.button(
     return styles;
   },
 );
-
-export default Button;
