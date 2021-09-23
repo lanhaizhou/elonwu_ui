@@ -2,8 +2,8 @@
 
 const primary = {
   100: '#979df1',
-  200: '#6b73e0',
-  300: '#434cc0',
+  200: '#868dd1',
+  300: '#565cc0',
   400: '#3a43b9',
   500: '#3139ac',
   600: '#262e9c',
@@ -11,6 +11,7 @@ const primary = {
   800: '#1b2170',
   900: '#14174b',
 
+  LIGHT: '#565cc0',
   DEFAULT: '#434cc0',
 };
 
@@ -31,6 +32,7 @@ module.exports = {
 
     fill: (theme) => ({
       primary: primary.DEFAULT,
+      light: primary.LIGHT,
       white: theme('colors.white'),
       gray: theme('colors.gray.50'),
     }),

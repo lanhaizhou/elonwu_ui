@@ -2,13 +2,13 @@ import React from 'react';
 import { Button } from '../index';
 
 export default {
-  title: 'Components/Base/Button',
+  title: 'Components/base/Button',
   component: Button,
 
   // 参数值、参数文档
   argTypes: {
     type: {
-      name: '类型',
+      name: 'type',
       description: '按钮类型',
       defaultValue: 'fill',
       options: ['fill', 'outline', 'ghost'],
@@ -30,30 +30,30 @@ export default {
       },
     },
     size: {
-      name: '大小',
+      name: 'size',
       description: '按钮大小',
-      defaultValue: 'base',
-      options: ['base', 'sm', 'lg'],
+      defaultValue: 'md',
+      options: ['md', 'sm', 'lg'],
       control: {
         type: 'select',
-        labels: { base: '默认', sm: '小', lg: '大' },
+        labels: { md: '默认', sm: '小', lg: '大' },
       },
 
       table: {
         type: {
           summary: 'enum',
           detail: `
-            base: 默认, sm: 小, lg: 大
+            md: 默认, sm: 小, lg: 大
           `,
         },
         defaultValue: {
-          summary: 'base',
+          summary: 'md',
         },
       },
     },
     round: {
-      name: '大圆角',
-      description: '圆角大小',
+      name: 'round',
+      description: '是否圆角',
       defaultValue: false,
       control: { type: 'boolean' },
       table: {
@@ -66,7 +66,7 @@ export default {
       },
     },
     block: {
-      name: 'Block',
+      name: 'block',
       description: '宽度为父容器宽度',
       defaultValue: false,
       control: { type: 'boolean' },
@@ -80,7 +80,7 @@ export default {
       },
     },
     children: {
-      name: '内容',
+      name: 'children',
       description: '按钮文字，可使用其他 ReactElement',
       type: 'string',
       defaultValue: 'Elon Button',

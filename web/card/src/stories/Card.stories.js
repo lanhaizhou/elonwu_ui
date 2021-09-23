@@ -7,7 +7,7 @@ export default {
   component: Card,
   argTypes: {
     full: {
-      name: 'block',
+      name: 'full',
       description: '是否 block',
       defaultValue: true,
       control: {
