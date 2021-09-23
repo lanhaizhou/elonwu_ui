@@ -19,10 +19,6 @@ const setRollup = (pkg, plugins = []) => ({
     // json
     json(),
 
-    commonjs({
-      transformMixedEsModules: true,
-      defaultIsModuleExports: 'auto',
-    }),
     // jsx
     babel({
       exclude: 'node_modules/**',
@@ -33,6 +29,10 @@ const setRollup = (pkg, plugins = []) => ({
         '@emotion/babel-preset-css-prop',
       ],
       plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
+    }),
+    commonjs({
+      transformMixedEsModules: true,
+      defaultIsModuleExports: 'auto',
     }),
 
     // external(),
