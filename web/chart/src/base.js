@@ -18,16 +18,6 @@ export function isValidArray(value) {
   return isArray(value) && value.length > 0;
 }
 
-// 是 undefined 或者 null
-export function isNil(value) {
-  return Boolean((value ?? true) === true && value !== true);
-}
-
-// 不是 undefined 或者 null
-export function notNil(value) {
-  return !isNil(value);
-}
-
 // 函数
 export function isFunction(value) {
   return typeof value === 'function';
