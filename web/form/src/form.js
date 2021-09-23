@@ -10,7 +10,7 @@ import {
   useFormState,
 } from 'react-hook-form';
 
-import { Text } from '@elonwu/text';
+import { Text } from '@elonwu/web-text';
 
 import { throttle } from 'lodash';
 
