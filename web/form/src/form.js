@@ -10,12 +10,16 @@ import {
   useFormState,
 } from 'react-hook-form';
 
-import { Title, Text } from '@elonwu/text';
+import { Text } from '@elonwu/text';
 
 import { throttle } from 'lodash';
 
 export function isNil(value) {
-  return value === undefined || value === null || isNaN(value);
+  return (
+    value === undefined ||
+    value === null ||
+    (typeof value === 'number' && isNaN(value))
+  );
 }
 
 // 数组类型
@@ -209,6 +213,8 @@ const FormItemRenderer = ({
   //   }
   // }, [key, errors]);
 
+  console.log({ label, isNil: isNil(label) });
+
   return (
     <div key={key} className="FormItem" style={formItemStyle} ref={ref}>
       {/* label */}
@@ -233,15 +239,13 @@ const Label = ({ children, style, rules }) => {
   if (isNil(children)) return null;
 
   return (
-    <label style={style} className="label">
-      <Title style={{ fontSize: 14 }}>
-        {/* 必填标识 */}
-        {rules?.required && (
-          <span style={{ color: '#ff5050', margin: 4 }}>*</span>
-        )}
-        {/* label */}
-        {children}:
-      </Title>
+    <label style={Object.assign({ fontSize: 14 }, style)}>
+      {/* 必填标识 */}
+      {rules?.required && (
+        <span style={{ color: '#ff5050', margin: 4 }}>*</span>
+      )}
+      {/* label */}
+      {children}:
     </label>
   );
 };
