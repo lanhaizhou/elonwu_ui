@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ElonWu/ui/compare/@elonwu/web@0.1.2...@elonwu/web@0.2.0) (2021-09-23)
+
+
+### Features
+
+* 新增 chart ([a06ca43](https://github.com/ElonWu/ui/commit/a06ca431eb739c74066d2aba513c247f03dc67b1))
+
+
+
+
+
 ## [0.1.2](https://github.com/ElonWu/ui/compare/@elonwu/web@0.1.1...@elonwu/web@0.1.2) (2021-09-23)
 
 **Note:** Version bump only for package @elonwu/web

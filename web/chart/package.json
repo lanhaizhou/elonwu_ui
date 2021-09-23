@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-chart",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "description": "elonwu web-chart",
   "source": "index.js",
@@ -42,10 +42,10 @@
     ]
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "@antv/data-set": "^0.11.8",
-    "@antv/g2": "^4.1.21"
+    "@antv/g2": "^4.1.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
