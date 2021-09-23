@@ -54,28 +54,28 @@ export default {
     round: {
       name: '大圆角',
       description: '圆角大小',
-      defaultValue: true,
+      defaultValue: false,
       control: { type: 'boolean' },
       table: {
         type: {
           summary: 'boolean',
         },
         defaultValue: {
-          summary: true,
+          summary: false,
         },
       },
     },
     block: {
       name: 'Block',
       description: '宽度为父容器宽度',
-      defaultValue: true,
+      defaultValue: false,
       control: { type: 'boolean' },
       table: {
         type: {
           summary: 'boolean',
         },
         defaultValue: {
-          summary: true,
+          summary: false,
         },
       },
     },
@@ -104,13 +104,13 @@ export default {
       // 代码示例
       source: {
         type: 'code',
-        code: `<Button round block type="fill" onClick={toggleDarkMode} />`,
+        code: `<Button>Elon Button</Button>`,
       },
     },
   },
 };
 
-export const Btn = (args) => {
+export const ButtonStory = (args) => {
   return (
     <div>
       <Button {...args} />

@@ -14,19 +14,20 @@ const Button = styled.button(
       tw`font-serif select-none`,
       /* 切换 theme */
       tw`transition-all`,
+      tw`cursor-pointer`,
     ];
 
     const sizes = {
       lg: tw`text-lg px-8 py-3`,
       md: tw`text-base px-4 py-2 rounded-md`,
-      sm: tw`text-sm px-2 py-1 rounded-sm`,
+      sm: tw`text-xs px-2 py-1 rounded-sm`,
     };
 
     const types = {
       /* 填充 */
       fill: [
         /* 装饰 */
-        tw`shadow-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-75`,
+        tw`border-0 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-75`,
 
         /* 浅色 */
         tw`bg-primary-500 text-white hover:bg-primary-700`,
@@ -38,7 +39,7 @@ const Button = styled.button(
       /* 描边 */
       outline: [
         /* 装饰 */
-        tw`shadow-md border focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-75`,
+        tw`border border-primary-200 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-75`,
 
         /* 浅色 */
         tw`bg-white text-primary-500 border-solid border-primary-500 hover:bg-primary-100 hover:text-gray-50`,
@@ -50,7 +51,7 @@ const Button = styled.button(
       /* ghost */
       ghost: [
         /* 浅色 */
-        tw`bg-transparent text-primary-300  hover:bg-gray-100 hover:text-primary-500`,
+        tw`border-0 bg-transparent text-primary-300  hover:bg-gray-100 hover:text-primary-500`,
 
         /* 深色 */
         tw`dark:text-white dark:hover:bg-primary-100 dark:hover:text-primary-500`,
