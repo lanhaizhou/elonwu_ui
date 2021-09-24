@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElonWu/ui.git",
+    "url": "git+https://github.com/ElonWu/elonwu_ui.git",
     "directory": "packages/web/text"
   },
   "scripts": {
