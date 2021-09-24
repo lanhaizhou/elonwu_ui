@@ -14,7 +14,7 @@ export const Card = styled.div(({ full = false }) => {
   ];
 
   if (full) {
-    styles.push(tw`block`);
+    styles.push(tw`block w-full`);
   }
 
   return styles;

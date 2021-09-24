@@ -213,14 +213,10 @@ const FormItemRenderer = ({
   //   }
   // }, [key, errors]);
 
-  console.log({ label, isNil: isNil(label) });
-
   return (
     <div key={key} className="FormItem" style={formItemStyle} ref={ref}>
       {/* label */}
-      <Label style={labelStyle} rules={rules}>
-        {label}
-      </Label>
+      <LabelMsg style={labelStyle} rules={rules} label={label} />
 
       {/* 表单组件 */}
       {/* {React.cloneElement(content, props, ref)} */}
@@ -235,18 +231,36 @@ const FormItemRenderer = ({
 /**
  * Label
  */
-const Label = ({ children, style, rules }) => {
-  if (isNil(children)) return null;
+
+const Label = styled.label(() => {
+  return [
+    tw`font-serif font-normal`,
+    tw`text-gray-700 dark:text-gray-50`,
+    tw`select-none`,
+  ];
+});
+
+const LabelMsg = ({ label, style, rules }) => {
+  if (isNil(label)) return null;
 
   return (
-    <label style={Object.assign({ fontSize: 14 }, style)}>
+    <Label style={style}>
       {/* 必填标识 */}
       {rules?.required && (
-        <span style={{ color: '#ff5050', margin: 4 }}>*</span>
+        <span
+          style={{
+            all: 'inherit',
+            color: '#ff5050',
+            display: 'inline-block',
+            margin: 4,
+          }}
+        >
+          *
+        </span>
       )}
       {/* label */}
-      {children}:
-    </label>
+      {label}:
+    </Label>
   );
 };
 
@@ -257,13 +271,7 @@ const ErrorMsg = ({ children, style }) => {
   if (isNil(children)) return null;
 
   return (
-    <Text
-      className="ErrorMsg"
-      style={Object.assign(
-        { maxWidth: `100%`, color: '#ff5050', padding: '4px 12px' },
-        style,
-      )}
-    >
+    <Text style={Object.assign({ maxWidth: `100%`, color: '#ff5050' }, style)}>
       {children}
     </Text>
   );

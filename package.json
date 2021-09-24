@@ -35,10 +35,10 @@
     "lint-staged": "^11.1.2"
   },
   "workspaces": [
-    "web/*",
-    "rn/*",
-    "miniapp/*",
-    "libraries/*"
+    "packages/web/*",
+    "packages/rn/*",
+    "packages/miniapp/*",
+    "packages/libraries/*"
   ],
   "dependencies": {
     "react": "^17.0.2",
