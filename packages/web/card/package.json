@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-card",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "elonwu web-card",
   "source": "index.js",
