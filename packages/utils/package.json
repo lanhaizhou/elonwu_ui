@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "elonwu utils",
   "source": "index.js",

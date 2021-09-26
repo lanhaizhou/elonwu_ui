@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "description": "elonwu web-form",
   "source": "index.js",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@elonwu/web-button": "0.0.2",
-    "@elonwu/web-text": "0.0.2",
+    "@elonwu/web-text": "0.1.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "lodash": "^4.17.21",

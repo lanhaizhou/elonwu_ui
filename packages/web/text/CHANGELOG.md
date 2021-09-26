@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-text@0.0.2...@elonwu/web-text@0.1.0) (2021-09-26)
+
+
+### Features
+
+* 字体增加 ellipsis, 增加非衬线字体 ([f81d812](https://github.com/ElonWu/elonwu_ui/commit/f81d812b527e91019af037384d40123fc622aab3))
+
+
+
+
+
 ## [0.0.2](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-text@0.0.1...@elonwu/web-text@0.0.2) (2021-09-24)
 
 

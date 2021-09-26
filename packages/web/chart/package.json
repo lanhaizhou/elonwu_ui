@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-chart",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "private": false,
   "description": "elonwu web-chart",
   "source": "index.js",
@@ -48,8 +48,8 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@elonwu/utils": "^0.0.1",
-    "@elonwu/web-empty": "^0.0.3",
+    "@elonwu/utils": "0.1.0",
+    "@elonwu/web-empty": "0.0.4",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "twin.macro": "^2.7.0"
