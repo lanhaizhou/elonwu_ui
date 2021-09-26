@@ -9,3 +9,4 @@ export * from './lineEnhance';
 export * from './lineGroup';
 export * from './pie';
 export * from './funnel';
+export * from './map';
