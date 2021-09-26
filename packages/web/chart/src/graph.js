@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 import * as DataSet from '@antv/data-set';
 
-import { Chart, isFunction } from './base';
+import { Chart } from './base';
 
-const defaultStyle = () => ({});
+import { isFunction, EmptyObject } from '@elonwu/utils';
+
+const defaultStyle = () => EmptyObject;
 
 export const Graph = React.forwardRef(
   ({ chartKey, labelStyle, connectStyle, sort = true, ...props }, ref) => {

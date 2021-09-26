@@ -26,7 +26,8 @@ module.exports = {
         primary,
       },
       fontFamily: {
-        serif: ['Noto Serif SC', 'serif'],
+        notoSerif: ['-apple-system', 'Noto Serif SC', 'serif'],
+        notoSans: ['-apple-system', 'Noto Sans SC', 'sans-serif'],
       },
     },
 

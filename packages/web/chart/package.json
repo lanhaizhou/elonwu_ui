@@ -48,6 +48,8 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
+    "@elonwu/utils": "^0.0.1",
+    "@elonwu/web-empty": "^0.0.3",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "twin.macro": "^2.7.0"

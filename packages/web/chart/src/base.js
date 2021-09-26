@@ -2,26 +2,11 @@ import React, { useMemo, useRef, useEffect, useLayoutEffect } from 'react';
 import { Chart as G2Chart, registerTheme, registerInteraction } from '@antv/g2';
 
 // components
-// import { Empty } from '@elonwu/empty';
-// import { Loading } from '@elonwu/loading';
+import { Empty } from '@elonwu/web-empty';
+// import { Loading } from '@elonwu/web-loading';
 
 // utils
-// import { isValidArray, isFunction, isArray } from '@elonwu/utils';
-
-// 数组类型
-export function isArray(value) {
-  return Array.isArray(value);
-}
-
-// 非空数组
-export function isValidArray(value) {
-  return isArray(value) && value.length > 0;
-}
-
-// 函数
-export function isFunction(value) {
-  return typeof value === 'function';
-}
+import { isValidArray, isFunction, isArray } from '@elonwu/utils';
 
 // 设置数据标识
 const setDataMarkers = ({ chart, dataMarkers, source }) => {
@@ -240,7 +225,7 @@ export const Chart = React.forwardRef(
         )} */}
 
         {/* empty */}
-        {/* {empty && (
+        {empty && (
           <Empty
             style={{
               position: 'absolute',
@@ -250,7 +235,7 @@ export const Chart = React.forwardRef(
               width: '100%',
             }}
           />
-        )} */}
+        )}
 
         {/* chart */}
         <div

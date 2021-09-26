@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Bar, Chart } from '..';
 import { Card } from '@elonwu/web-card';
+import { useApi } from '@elonwu/hooks';
 
 export default {
   title: 'Components/Chart/Bar',
   component: Bar,
 };
 
-export const BarStory = () => (
-  <Bar
-    chartKey="Story-BarChart"
-    dataSource={[
-      { x: '2020-07-25', y: 100 },
-      { x: '2020-07-26', y: 120 },
-      { x: '2020-07-27', y: 70 },
-      { x: '2020-07-28', y: 140 },
-      { x: '2020-07-29', y: 110 },
-      { x: '2020-07-30', y: 30 },
-      { x: '2020-07-31', y: 60 },
-    ]}
-  />
-);
+const fetchBar = () => {
+  return new Promise((resolve) => {
+    setTimeout(
+      () =>
+        resolve([
+          { x: '2020-07-25', y: 100 },
+          { x: '2020-07-26', y: 120 },
+          { x: '2020-07-27', y: 70 },
+          { x: '2020-07-28', y: 140 },
+          { x: '2020-07-29', y: 110 },
+          { x: '2020-07-30', y: 30 },
+          { x: '2020-07-31', y: 60 },
+        ]),
+      2000,
+    );
+  });
+};
+
+export const BarStory = () => {
+  const { data = [], loading } = useApi(fetchBar);
+
+  // 可做二次处理
+  const dataSource = useMemo(() => data, [data]);
+
+  return (
+    <Bar chartKey="Story-BarChart" dataSource={dataSource} loading={loading} />
+  );
+};
 
 export const MobileBarStory = () => (
   <Card style={{ width: 275, margin: 'auto' }}>
