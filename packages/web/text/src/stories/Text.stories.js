@@ -17,9 +17,13 @@ export const Paragraph = () => (
   <Card style={{ display: 'grid', gap: 16, padding: 16 }}>
     <Text size="xs">{txt}</Text>
 
-    <Text size="sm">{txt}</Text>
+    <Text size="sm" ellipsis>
+      {txt}
+    </Text>
 
-    <Text size="base">{txt}</Text>
+    <Text size="base" ellipsis={2}>
+      {txt}
+    </Text>
 
     <Text size="lg">{txt}</Text>
 
