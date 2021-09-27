@@ -15,13 +15,17 @@ const gwApi = new Request(
   { withCredentials: false },
 );
 
-const getMapData = () => gwApi.get('/os/antvdemo/assets/data/world.geo.json');
+const getMapData = ({ type }) =>
+  gwApi.get(`/os/antvdemo/assets/data/${type}.geo.json`);
 
 export const Map = React.forwardRef(
-  ({ chartKey, mainKey, tooltipKeys, ...props }, ref) => {
+  (
+    { chartKey, locateType, renderDataView, mapType = 'world', ...props },
+    ref,
+  ) => {
     const { data: mapData } = useApi(
       getMapData,
-      {},
+      { type: mapType },
       {
         dedupingInterval: 1000 * 60 * 60 * 24, // 24 小时内复用数据
       },
@@ -43,7 +47,7 @@ export const Map = React.forwardRef(
         chart.legend(false);
         chart.axis(false);
 
-        // tooltip
+        // TODO 更新 tooltip 自定义样式
         chart.tooltip({
           showTitle: false,
           shared: true,
@@ -63,66 +67,71 @@ export const Map = React.forwardRef(
         });
 
         // 绘制地图背景
-        const dv = ds
-          .createView('back')
+        const mapView = ds
+          .createView('map')
           .source(mapData, {
             type: 'GeoJSON',
           })
           .transform({
             type: 'geo.projection',
             projection: 'geoMercator',
-            as: ['x', 'y', 'centroidX', 'centroidY'],
+            as: ['lng', 'lat', 'centroidX', 'centroidY'],
           });
         const bgView = chart.createView();
-        bgView.data(dv.rows);
+        bgView.data(mapView.rows);
         bgView.tooltip(false);
-        bgView.polygon().position('x*y').style({
+
+        // 边框
+        bgView.polygon().position('lng*lat').style({
           fill: colors20[23],
           stroke: colors20[0],
           lineWidth: 0.4,
           fillOpacity: 0.75,
         });
 
-        // 绘制数据
-        const userData = ds.createView().source(source);
+        const dataView = ds.createView().source(source);
 
-        userData.transform({
-          type: 'map',
-          callback: (obj) => {
-            const projectedCoord = dv.geoProjectPosition(
-              [obj.lng * 1, obj.lat * 1],
-              'geoMercator',
-            );
-            obj.x = projectedCoord[0];
-            obj.y = projectedCoord[1];
-            return obj;
-          },
-        });
-
-        const pointView = chart.createView();
-        pointView.data(userData.rows);
-        // 设定 tooptip
-        pointView
-          .point()
-          .position('x*y')
-          .size(mainKey, [10, 20])
-          .shape('circle')
-          .color(colors20[1])
-          .tooltip(tooltipKeys.join('*'))
-          .style({
-            fillOpacity: 0.45,
-          })
-          .state({
-            active: {
-              style: {
-                lineWidth: 1,
-                stroke: colors20[2],
+        switch (locateType) {
+          // 按名称定位数据点
+          case 'NAME':
+            dataView.transform({
+              geoDataView: mapView,
+              field: 'name',
+              type: 'geo.name',
+              as: ['lng', 'lat'],
+            });
+            break;
+          // 按国家或地区名定位数据点
+          case 'REGION':
+            dataView.transform({
+              geoDataView: mapView,
+              field: 'region',
+              type: 'geo.region',
+              as: ['lng', 'lat'],
+            });
+            break;
+          // 按经纬度定位数据点
+          case 'LNGLAT':
+            dataView.transform({
+              type: 'map',
+              callback: (obj) => {
+                const projectedCoord = mapView.geoProjectPosition(
+                  [obj.lng * 1, obj.lat * 1],
+                  'geoMercator',
+                );
+                obj.lng = projectedCoord[0];
+                obj.lat = projectedCoord[1];
+                return obj;
               },
-            },
-          });
-        pointView.interaction('element-active');
+            });
+            break;
+        }
+
+        renderDataView && renderDataView({ chart, dataView, source, mapView });
+
+        chart.render();
       },
-      [mapData, mainKey, tooltipKeys],
+      [mapData, locateType, renderDataView],
     );
 
     return (
