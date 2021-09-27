@@ -10,17 +10,32 @@ module.exports = {
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 
   webpackFinal: async (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve.alias,
-          '@emotion/core': toPath('node_modules/@emotion/react'),
-          '@emotion/styled': toPath('node_modules/@emotion/styled'),
-          'emotion-theming': toPath('node_modules/@emotion/react'),
+    config.resolve.alias = Object.assign({}, config.resolve.alias, {
+      '@emotion/core': toPath('node_modules/@emotion/react'),
+      '@emotion/styled': toPath('node_modules/@emotion/styled'),
+      'emotion-theming': toPath('node_modules/@emotion/react'),
+    });
+
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            presets: [
+              '@babel/preset-react',
+              ['@babel/preset-env', { targets: { node: 'current' } }],
+              '@babel/preset-typescript',
+              '@emotion/babel-preset-css-prop',
+            ],
+            plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
+          },
         },
-      },
-    };
+      ],
+    });
+
+    config.resolve.extensions.push('.tsx', '.ts');
+
+    return config;
   },
 };

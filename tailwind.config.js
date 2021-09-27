@@ -2,7 +2,7 @@
 
 const primary = {
   100: '#979df1',
-  200: '#868dd1',
+  200: '#9197d4',
   300: '#565cc0',
   400: '#3a43b9',
   500: '#3139ac',
@@ -17,7 +17,7 @@ const primary = {
 
 module.exports = {
   mode: 'jit',
-  purge: ['./packages/**/*.js'],
+  purge: ['./packages/**/*.js', './packages/**/*.ts', './packages/**/*.tsx'],
 
   darkMode: 'class', // or 'media' or 'class'
   theme: {
