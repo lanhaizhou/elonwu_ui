@@ -1,10 +1,24 @@
-import tw, { styled, css } from 'twin.macro';
+import tw, { styled, css, TwStyle } from 'twin.macro';
+import { SerializedStyles } from '@emotion/cache/node_modules/@emotion/utils';
 /**
  *  Button
  */
-export const Button = styled.button(
-  ({ type = 'fill', size = 'md', round = false, block = false }) => {
-    const styles = [
+
+export type ButtonType = 'fill' | 'outline' | 'ghost';
+export type ButtonSize = 'lg' | 'md' | 'sm';
+
+export type StyleProps = (SerializedStyles | TwStyle)[];
+
+export interface ButtonProps {
+  type?: ButtonType;
+  size?: ButtonSize;
+  round?: boolean;
+  block?: boolean;
+}
+
+export const Button = styled.button<ButtonProps>(
+  ({ type = 'fill', size = 'md', round, block }: ButtonProps): StyleProps => {
+    let styles: StyleProps = [
       css`
         appearance: none;
       `,
@@ -17,13 +31,13 @@ export const Button = styled.button(
       tw`cursor-pointer`,
     ];
 
-    const sizes = {
+    const sizes: { [key in ButtonSize]: TwStyle } = {
       lg: tw`text-lg px-8 py-3`,
       md: tw`text-base px-4 py-2 rounded-md`,
       sm: tw`text-xs px-2 py-1 rounded-sm`,
     };
 
-    const types = {
+    const types: { [key in ButtonType]: TwStyle | StyleProps } = {
       /* 填充 */
       fill: [
         /* 装饰 */
@@ -58,20 +72,16 @@ export const Button = styled.button(
       ],
     };
 
-    if (sizes[size]) {
-      styles.push(sizes[size]);
-    }
+    styles = styles.concat(sizes[size] || sizes.md);
 
-    if (types[type]) {
-      styles.push(types[type]);
-    }
+    styles = styles.concat(types[type] || types.fill);
 
     if (round) {
-      styles.push(tw`rounded-full`);
+      styles = styles.concat(tw`rounded-full`);
     }
 
     if (block) {
-      styles.push(tw`w-full`);
+      styles = styles.concat(tw`w-full`);
     }
 
     return styles;
