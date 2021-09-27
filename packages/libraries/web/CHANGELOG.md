@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.2.10...@elonwu/web@0.3.0) (2021-09-27)
+
+
+### Features
+
+* 新增 G6 图表 ([f73e7f8](https://github.com/ElonWu/elonwu_ui/commit/f73e7f8671c488c8443308dcbe6a20c73ca6d8a9))
+* 新增 tag ([5e2ddd8](https://github.com/ElonWu/elonwu_ui/commit/5e2ddd808afa36a0e021c7a7ed2fdb7949e106c9))
+
+
+
+
+
 ## [0.2.10](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.2.9...@elonwu/web@0.2.10) (2021-09-26)
 
 **Note:** Version bump only for package @elonwu/web

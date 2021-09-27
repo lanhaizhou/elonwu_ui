@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-form@0.0.5...@elonwu/web-form@0.0.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* story 目录位置 ([d2328fd](https://github.com/ElonWu/elonwu_ui/commit/d2328fd217b799b1522c06d2bd2e52e2911d5f61))
+
+
+
+
+
 ## [0.0.5](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-form@0.0.4...@elonwu/web-form@0.0.5) (2021-09-26)
 
 **Note:** Version bump only for package @elonwu/web-form

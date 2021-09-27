@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web",
-  "version": "0.2.10",
+  "version": "0.3.0",
   "description": "elonwu web",
   "source": "./index.js",
   "main": "dist/cjs/index.js",
@@ -41,15 +41,15 @@
     "rollup-plugin-svg": "^2.0.0"
   },
   "dependencies": {
-    "@elonwu/web-button": "0.0.2",
+    "@elonwu/web-button": "0.0.3",
     "@elonwu/web-card": "0.0.2",
-    "@elonwu/web-chart": "0.2.0",
-    "@elonwu/web-empty": "0.0.4",
-    "@elonwu/web-form": "0.0.5",
-    "@elonwu/web-icon": "0.0.4",
-    "@elonwu/web-text": "0.1.0",
-    "@elonwu/web-graph": "0.0.1",
-    "@elonwu/web-tag": "0.0.1"
+    "@elonwu/web-chart": "0.2.1",
+    "@elonwu/web-empty": "0.0.5",
+    "@elonwu/web-form": "0.0.6",
+    "@elonwu/web-graph": "0.1.0",
+    "@elonwu/web-icon": "0.0.5",
+    "@elonwu/web-tag": "0.1.0",
+    "@elonwu/web-text": "0.1.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
