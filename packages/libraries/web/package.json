@@ -47,7 +47,8 @@
     "@elonwu/web-empty": "0.0.4",
     "@elonwu/web-form": "0.0.5",
     "@elonwu/web-icon": "0.0.4",
-    "@elonwu/web-text": "0.1.0"
+    "@elonwu/web-text": "0.1.0",
+    "@elonwu/web-graph": "0.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",
