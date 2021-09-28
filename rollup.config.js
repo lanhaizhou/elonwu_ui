@@ -79,24 +79,8 @@ export const override = (pkg, callback) => {
     ],
     external: Object.keys(pkg.peerDependencies || {}),
     plugins: [
-      // del({ targets: ['dist/*'] }),
-      json(),
       dts(),
-      // jsx
-      babel({
-        exclude: 'node_modules/**',
-        extensions: ['.ts', '.tsx'],
-        presets: [
-          '@babel/preset-react',
-          ['@babel/preset-env', { targets: { node: 'current' } }],
-          '@babel/preset-typescript',
-          '@emotion/babel-preset-css-prop',
-        ],
-        plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
-      }),
       commonjs({
-        extensions: ['.ts', '.tsx'],
-        exclude: 'node_modules/**',
         transformMixedEsModules: true,
         defaultIsModuleExports: 'auto',
       }),
