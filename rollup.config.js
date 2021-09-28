@@ -3,7 +3,6 @@ import babel from '@rollup/plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import del from 'rollup-plugin-delete';
-import typescript from 'rollup-plugin-typescript';
 import dts from 'rollup-plugin-dts';
 
 export const override = (pkg, callback) => {
@@ -22,7 +21,7 @@ export const override = (pkg, callback) => {
       // jsx
       babel({
         exclude: 'node_modules/**',
-        // resolve: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
         presets: [
           '@babel/preset-react',
           ['@babel/preset-env', { targets: { node: 'current' } }],
@@ -49,12 +48,11 @@ export const override = (pkg, callback) => {
       del({ targets: ['dist/*'] }),
       // json
       json(),
-
-      typescript(),
       // jsx
       babel({
+        babelHelpers: 'bundled',
         exclude: 'node_modules/**',
-        // resolve: ['.ts', '.tsx'],
+        extensions: ['.ts', '.tsx'],
         presets: [
           '@babel/preset-react',
           ['@babel/preset-env', { targets: { node: 'current' } }],
@@ -63,7 +61,10 @@ export const override = (pkg, callback) => {
         ],
         plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
       }),
+
       commonjs({
+        extensions: ['.ts', '.tsx'],
+        exclude: 'node_modules/**',
         transformMixedEsModules: true,
         defaultIsModuleExports: 'auto',
       }),
@@ -73,19 +74,18 @@ export const override = (pkg, callback) => {
   const dtsConfig = {
     input: pkg.source,
     output: [
-      { file: pkg.main.replace('.js', '.d.ts'), format: 'es' },
-      { file: pkg.module.replace('.js', '.d.ts'), format: 'es' },
+      { file: pkg.main.replace('.js', '.d.ts'), format: 'cjs' },
+      { file: pkg.module.replace('.js', '.d.ts'), format: 'esm' },
     ],
     external: Object.keys(pkg.peerDependencies || {}),
     plugins: [
       // del({ targets: ['dist/*'] }),
       json(),
-      typescript(),
       dts(),
       // jsx
       babel({
         exclude: 'node_modules/**',
-        // resolve: ['.ts', '.tsx'],
+        extensions: ['.ts', '.tsx'],
         presets: [
           '@babel/preset-react',
           ['@babel/preset-env', { targets: { node: 'current' } }],
@@ -95,6 +95,8 @@ export const override = (pkg, callback) => {
         plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
       }),
       commonjs({
+        extensions: ['.ts', '.tsx'],
+        exclude: 'node_modules/**',
         transformMixedEsModules: true,
         defaultIsModuleExports: 'auto',
       }),
