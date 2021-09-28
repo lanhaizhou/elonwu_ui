@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Chart } from './base';
+import { Graph } from './base';
 
 export const Tree = React.forwardRef(({ chartKey, ...props }, ref) => {
   // 渲染配置
@@ -32,7 +32,7 @@ export const Tree = React.forwardRef(({ chartKey, ...props }, ref) => {
   }, []);
 
   return (
-    <Chart
+    <Graph
       ref={ref}
       chartKey={`Tree-${chartKey}`}
       configChart={configChart}

@@ -3,7 +3,7 @@ export * from './areaStack';
 export * from './bar';
 export * from './barGroup';
 export * from './barStack';
-export * from './graph';
+export * from './sankey';
 export * from './line';
 export * from './lineEnhance';
 export * from './lineGroup';

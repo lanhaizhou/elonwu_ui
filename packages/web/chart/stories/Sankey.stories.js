@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { Graph } from '../src';
-import { Card } from '@elonwu/web-card';
+import React from 'react';
+import { Sankey } from '../src';
 
 export default {
-  title: 'Components/Chart/Graph',
+  title: 'Components/Chart/Sankey',
   component: Graph,
 };
 
-export const GraphStory = () => (
-  <Graph
-    chartKey="Story-GraphChart"
+export const SankeyStory = () => (
+  <Sankey
+    chartKey="Story-SankeyChart"
     dataSource={{
       links: [
         { source: 0, target: 1, value: 76372520 },

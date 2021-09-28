@@ -7,7 +7,7 @@ import { isFunction, EmptyObject } from '@elonwu/utils';
 
 const defaultStyle = () => EmptyObject;
 
-export const Graph = React.forwardRef(
+export const Sankey = React.forwardRef(
   ({ chartKey, labelStyle, connectStyle, sort = true, ...props }, ref) => {
     // 渲染配置
     const configChart = useCallback(({ chart, source }) => {
@@ -118,7 +118,7 @@ export const Graph = React.forwardRef(
     return (
       <Chart
         ref={ref}
-        chartKey={`Graph-${chartKey}`}
+        chartKey={`Sankey-${chartKey}`}
         configChart={configChart}
         {...props}
       />

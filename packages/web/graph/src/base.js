@@ -105,7 +105,7 @@ const useChartUpdate = ({ chartRef, source, setConfig, configChart }) => {
 };
 
 // dom 渲染 chart
-export const Chart = React.forwardRef(
+export const Graph = React.forwardRef(
   (
     {
       chartKey,
@@ -199,13 +199,3 @@ export const Chart = React.forwardRef(
     );
   },
 );
-
-/**************
- * 主题配置
- ***************/
-
-export const textStyle = {
-  fontFamily: `Noto Serif SC, serif`,
-  fontSize: 10,
-  fill: '#656D78',
-};
