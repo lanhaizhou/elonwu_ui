@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/hooks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "elonwu hooks",
   "source": "index.js",
@@ -46,7 +46,7 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@elonwu/utils": "0.1.0",
+    "@elonwu/utils": "0.1.1",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "axios": "^0.21.4",

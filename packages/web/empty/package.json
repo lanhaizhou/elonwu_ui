@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-empty",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "description": "elonwu web-empty",
   "source": "index.js",
@@ -46,8 +46,8 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@elonwu/web-icon": "0.0.5",
-    "@elonwu/web-text": "0.1.0",
+    "@elonwu/web-icon": "0.0.6",
+    "@elonwu/web-text": "0.1.1",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "twin.macro": "^2.7.0"
