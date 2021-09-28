@@ -1,8 +1,12 @@
 import svg from 'rollup-plugin-svg';
 
 import pkg from './package.json';
-import setRollup from '../../../rollup.config';
+import { override } from '../../../rollup.config';
 
-const config = setRollup(pkg, [svg({ base64: true })]);
+const config = override(pkg, ({ jsConfig }) =>
+  Object.assign({}, jsConfig, {
+    plugins: jsConfig.plugins.concat([svg({ base64: true })]),
+  }),
+);
 
 export default config;

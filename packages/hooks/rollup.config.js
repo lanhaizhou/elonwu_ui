@@ -1,6 +1,7 @@
 import pkg from './package.json';
-import setRollup from '../../rollup.config';
 
-const config = setRollup(pkg);
+import { override } from '../../rollup.config';
+
+const config = override(pkg, ({ jsConfig }) => jsConfig);
 
 export default config;
