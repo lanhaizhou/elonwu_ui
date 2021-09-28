@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-chart@0.2.2...@elonwu/web-chart@0.2.3) (2021-09-28)
+
+
+### Bug Fixes
+
+* 修改 桑葚图和 Graph 的冲突 ([7a1e5f2](https://github.com/ElonWu/elonwu_ui/commit/7a1e5f22850d67f4033d1f2652c30c1336a81e31))
+
+
+
+
+
 ## [0.2.2](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-chart@0.2.1...@elonwu/web-chart@0.2.2) (2021-09-28)
 
 

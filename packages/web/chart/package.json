@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-chart",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": false,
   "description": "elonwu web-chart",
   "source": "index.js",
