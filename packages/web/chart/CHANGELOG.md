@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-chart@0.2.3...@elonwu/web-chart@0.2.4) (2021-09-30)
+
+**Note:** Version bump only for package @elonwu/web-chart
+
+
+
+
+
 ## [0.2.3](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-chart@0.2.2...@elonwu/web-chart@0.2.3) (2021-09-28)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-empty@0.0.6...@elonwu/web-empty@0.0.7) (2021-09-30)
+
+**Note:** Version bump only for package @elonwu/web-empty
+
+
+
+
+
 ## [0.0.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-empty@0.0.5...@elonwu/web-empty@0.0.6) (2021-09-28)
 
 

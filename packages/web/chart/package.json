@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-chart",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "description": "elonwu web-chart",
   "source": "index.ts",
@@ -47,13 +47,13 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@elonwu/utils": "0.1.1",
-    "@elonwu/web-empty": "0.0.6",
+    "@antv/data-set": "^0.11.8",
+    "@antv/g2": "^4.1.21",
+    "@elonwu/utils": "0.1.2",
+    "@elonwu/web-empty": "0.0.7",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "twin.macro": "^2.7.0",
-    "@antv/data-set": "^0.11.8",
-    "@antv/g2": "^4.1.21"
+    "twin.macro": "^2.7.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
