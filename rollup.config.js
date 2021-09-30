@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import del from 'rollup-plugin-delete';
 import dts from 'rollup-plugin-dts';
+import styles from 'rollup-plugin-styles';
 
 export const override = (pkg, callback) => {
   // 打包代码
@@ -18,6 +19,7 @@ export const override = (pkg, callback) => {
       del({ targets: ['dist/*'] }),
       // json
       json(),
+      styles(),
       // jsx
       babel({
         exclude: 'node_modules/**',
@@ -48,6 +50,7 @@ export const override = (pkg, callback) => {
       del({ targets: ['dist/*'] }),
       // json
       json(),
+      styles(),
       // jsx
       babel({
         babelHelpers: 'bundled',
@@ -74,12 +77,14 @@ export const override = (pkg, callback) => {
   const dtsConfig = {
     input: pkg.source,
     output: [
-      { file: pkg.main.replace('.js', '.d.ts'), format: 'cjs' },
-      { file: pkg.module.replace('.js', '.d.ts'), format: 'esm' },
+      { file: pkg.types, format: 'es' },
+      // { file: pkg.main.replace('.js', '.d.ts'), format: 'cjs' },
+      // { file: pkg.module.replace('.js', '.d.ts'), format: 'esm' },
     ],
     external: Object.keys(pkg.peerDependencies || {}),
     plugins: [
       dts(),
+      styles(),
       commonjs({
         transformMixedEsModules: true,
         defaultIsModuleExports: 'auto',

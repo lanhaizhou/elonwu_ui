@@ -15,69 +15,31 @@ export const TreeStory = () => (
         id: 'BBGAME',
         children: [
           {
-            id: '战略支撑平台',
+            id: 'Boos1',
             children: [
               {
-                id: '技术部',
+                id: 'MG1',
+                children: [{ id: 'MG10' }, { id: 'MG11' }],
               },
               {
-                id: '运维部',
+                id: 'MG2',
+                children: [{ id: 'MG12' }, { id: 'MG13' }],
               },
+              { id: 'MG5' },
+              { id: 'MG6' },
               {
-                id: '人力资源中心',
+                id: 'MG3',
+                children: [{ id: 'MG15' }, { id: 'MG16' }],
               },
             ],
           },
           {
-            id: '研发平台',
+            id: 'Boos2',
             children: [
+              { id: 'MG7', children: [{ id: 'MG20' }] },
               {
-                id: '研发一部',
-                children: [
-                  {
-                    id: '一部开发',
-                  },
-                  {
-                    id: '一部策划',
-                  },
-                  {
-                    id: '一部美术',
-                  },
-                ],
-              },
-              {
-                id: '研发二部',
-                children: [
-                  {
-                    id: '二部开发',
-                  },
-                  {
-                    id: '二部策划',
-                  },
-                  {
-                    id: '二部美术',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: '发行平台',
-            children: [
-              {
-                id: '市场部',
-              },
-              {
-                id: '设计部',
-              },
-              {
-                id: '日本',
-              },
-              {
-                id: '韩国',
-              },
-              {
-                id: '欧美',
+                id: 'MG4',
+                children: [{ id: 'MG17' }, { id: 'MG18' }, { id: 'MG19' }],
               },
             ],
           },

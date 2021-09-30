@@ -16,25 +16,47 @@ module.exports = {
       'emotion-theming': toPath('node_modules/@emotion/react'),
     });
 
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-          options: {
-            presets: [
-              '@babel/preset-react',
-              ['@babel/preset-env', { targets: { node: 'current' } }],
-              '@babel/preset-typescript',
-              '@emotion/babel-preset-css-prop',
-            ],
-            plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
+    config.module.rules.push(
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [
+                '@babel/preset-react',
+                ['@babel/preset-env', { targets: { node: 'current' } }],
+                '@babel/preset-typescript',
+                '@emotion/babel-preset-css-prop',
+              ],
+              plugins: ['@emotion/babel-plugin', 'babel-plugin-macros'],
+            },
           },
-        },
-      ],
-    });
+        ],
+      },
+      {
+        test: /\.(less)$/,
+        use: [
+          {
+            loader: require.resolve('style-loader'),
+          },
+          {
+            loader: require.resolve('css-loader'),
+          },
+          {
+            loader: require.resolve('less-loader'),
+            options: {
+              // lessOptions: {
+              strictMath: true,
+              noIeCompat: true,
+              // },
+            },
+          },
+        ],
+      },
+    );
 
-    config.resolve.extensions.push('.tsx', '.ts');
+    config.resolve.extensions.push('.tsx', '.ts', '.less');
 
     return config;
   },

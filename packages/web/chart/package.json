@@ -3,7 +3,8 @@
   "version": "0.2.3",
   "private": false,
   "description": "elonwu web-chart",
-  "source": "index.js",
+  "source": "index.ts",
+  "types": "dist/lib/index.d.ts",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "exports": {
@@ -42,8 +43,6 @@
     ]
   },
   "peerDependencies": {
-    "@antv/data-set": "^0.11.8",
-    "@antv/g2": "^4.1.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -52,11 +51,11 @@
     "@elonwu/web-empty": "0.0.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "twin.macro": "^2.7.0"
+    "twin.macro": "^2.7.0",
+    "@antv/data-set": "^0.11.8",
+    "@antv/g2": "^4.1.21"
   },
   "devDependencies": {
-    "@antv/data-set": "^0.11.8",
-    "@antv/g2": "^4.1.21",
     "@babel/preset-react": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",

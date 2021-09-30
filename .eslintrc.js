@@ -19,8 +19,8 @@ module.exports = {
   },
   plugins: ['prettier', 'react'],
   rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }], // 第二条保证在 windows 下不报错
     'no-console': 'warn', // 警告代码中保留了 console
-    'prettier/prettier': 2,
     'import/no-extraneous-dependencies': 'off',
     'react/prop-types': 'off', // 避免自定义属性无法通过检测
     'react/display-name': 'off', // 避免无法直接使用匿名函数
@@ -34,6 +34,7 @@ module.exports = {
     // ],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], // 允许在 js 文件中 使用 jsx 语法
     'no-unused-vars': 'off',
+    'no-undef': 'error',
   },
   settings: {
     'import/resolver': ['node'],
