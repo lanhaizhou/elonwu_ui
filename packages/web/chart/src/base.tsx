@@ -34,7 +34,7 @@ export type ChartRenderer = ({
 }) => void;
 
 export interface ChartProps {
-  chartKey: 'string';
+  chartKey: string;
   loading?: boolean;
   dataSource?: any;
 

@@ -71,38 +71,23 @@ const useGraph = ({
     const chart = new G6.TreeGraph({
       container: `Graph-${chartKey}`,
       linkCenter: true,
+      animate: false,
       modes: {
         default: [
-          {
-            type: 'collapse-expand',
-            onChange: function onChange(
-              item: Item | undefined,
-              collapsed: boolean | undefined,
-            ) {
-              const data = item?.get('model');
-              data.collapsed = collapsed;
-              return true;
-            },
-          },
+          // {
+          //   type: 'collapse-expand',
+          //   onChange: function onChange(
+          //     item: Item | undefined,
+          //     collapsed: boolean | undefined,
+          //   ) {
+          //     const data = item?.get('model');
+          //     data.collapsed = collapsed;
+          //     return true;
+          //   },
+          // },
           // 'drag-canvas',
           // 'zoom-canvas',
         ],
-      },
-      // defaultNode: {
-      //   size: 26,
-      //   anchorPoints: [
-      //     [0, 0.5],
-      //     [1, 0.5],
-      //   ],
-      // },
-      // defaultEdge: {
-      //   type: 'cubic-vertical',
-      // },
-      layout: {
-        type: 'dendrogram',
-        direction: 'TB', // H / V / LR / RL / TB / BT
-        nodeSep: 40,
-        rankSep: 100,
       },
       ...rest,
     });
@@ -183,6 +168,8 @@ export const Graph = React.forwardRef(
       events = {},
       width = 320,
       height = 320,
+
+      ...rest
     }: GraphProps,
     ref,
   ) => {
@@ -208,6 +195,7 @@ export const Graph = React.forwardRef(
       dataSource,
       height,
       width,
+      ...rest,
     });
 
     // 更新渲染

@@ -10,41 +10,41 @@ export const MapByRegionStory = () => (
   <Map
     chartKey="Story-Map-ByRegion-China"
     height={500}
-    // locateType="REGION"
-    locateType="LNGLAT"
+    locateType="REGION"
+    // locateType="LNGLAT"
     mapType="china-provinces"
     dataSource={[
-      {
-        date: '1902/12/16',
-        location: 'Andijon (Andizhan), Uzbekistan (Turkestan, Russia)',
-        lat: '40.8',
-        lng: '72.3',
-        live: 4700,
-        magnitude: '6.4',
-      },
-      // { region: 'Beijing', value: 86.8 },
-      // { region: 'Shanghai', value: 86.8 },
+      // {
+      //   date: '1902/12/16',
+      //   location: 'Andijon (Andizhan), Uzbekistan (Turkestan, Russia)',
+      //   lat: '40.8',
+      //   lng: '72.3',
+      //   live: 4700,
+      //   magnitude: '6.4',
+      // },
+      { region: 'Beijing', value: 86.8 },
+      { region: 'Shanghai', value: 86.8 },
 
-      // { region: 'China', value: 106.3 },
-      // { region: 'Japan', value: 94.7 },
-      // { region: 'Mongolia', value: 98 },
-      // { region: 'Canada', value: 98.4 },
-      // { region: 'United Kingdom', value: 97.2 },
-      // { region: 'United States of America', value: 98.3 },
-      // { region: 'Brazil', value: 96.7 },
-      // { region: 'Argentina', value: 95.8 },
-      // { region: 'Algeria', value: 101.3 },
-      // { region: 'France', value: 94.8 },
-      // { region: 'Germany', value: 96.6 },
-      // { region: 'Ukraine', value: 86.3 },
-      // { region: 'Egypt', value: 102.1 },
-      // { region: 'South Africa', value: 101.3 },
-      // { region: 'India', value: 107.6 },
-      // { region: 'Australia', value: 99.9 },
-      // { region: 'Saudi Arabia', value: 130.1 },
-      // { region: 'Afghanistan', value: 106.5 },
-      // { region: 'Kazakhstan', value: 93.4 },
-      // { region: 'Indonesia', value: 101.4 },
+      { region: 'China', value: 106.3 },
+      { region: 'Japan', value: 94.7 },
+      { region: 'Mongolia', value: 98 },
+      { region: 'Canada', value: 98.4 },
+      { region: 'United Kingdom', value: 97.2 },
+      { region: 'United States of America', value: 98.3 },
+      { region: 'Brazil', value: 96.7 },
+      { region: 'Argentina', value: 95.8 },
+      { region: 'Algeria', value: 101.3 },
+      { region: 'France', value: 94.8 },
+      { region: 'Germany', value: 96.6 },
+      { region: 'Ukraine', value: 86.3 },
+      { region: 'Egypt', value: 102.1 },
+      { region: 'South Africa', value: 101.3 },
+      { region: 'India', value: 107.6 },
+      { region: 'Australia', value: 99.9 },
+      { region: 'Saudi Arabia', value: 130.1 },
+      { region: 'Afghanistan', value: 106.5 },
+      { region: 'Kazakhstan', value: 93.4 },
+      { region: 'Indonesia', value: 101.4 },
     ]}
     renderDataView={({ chart, dataView, source }) => {
       // 可视化用户数据

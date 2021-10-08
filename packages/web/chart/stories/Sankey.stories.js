@@ -3,7 +3,7 @@ import { Sankey } from '../src';
 
 export default {
   title: 'Components/Chart/Sankey',
-  component: Graph,
+  component: Sankey,
 };
 
 export const SankeyStory = () => (

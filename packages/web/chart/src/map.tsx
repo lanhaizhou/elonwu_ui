@@ -16,7 +16,7 @@ const gwApi = new Request(
   { withCredentials: false },
 );
 
-const getMapData = (type: MapType) =>
+const getMapData = ({ type }: { type: MapType }) =>
   gwApi.get(`/os/antvdemo/assets/data/${type}.geo.json`);
 
 export type MapType = 'world' | 'china-provinces';
@@ -37,9 +37,13 @@ export const Map = React.forwardRef(
     },
     ref,
   ) => {
-    const { data: mapData } = useApi(getMapData, mapType || 'world', {
-      dedupingInterval: 1000 * 60 * 60 * 24, // 24 小时内复用数据
-    });
+    const { data: mapData } = useApi(
+      getMapData,
+      { type: mapType || 'world' },
+      {
+        dedupingInterval: 1000 * 60 * 60 * 24, // 24 小时内复用数据
+      },
+    );
 
     // 渲染配置
     const configChart = useCallback<ChartRenderer>(
