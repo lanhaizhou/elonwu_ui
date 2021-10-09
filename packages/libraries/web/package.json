@@ -50,6 +50,7 @@
     "@elonwu/web-form": "0.0.9",
     "@elonwu/web-graph": "0.1.4",
     "@elonwu/web-icon": "0.0.7",
+    "@elonwu/web-menu": "0.0.3",
     "@elonwu/web-tag": "0.1.2",
     "@elonwu/web-text": "0.1.2"
   },
