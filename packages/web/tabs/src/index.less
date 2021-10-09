@@ -1,0 +1,44 @@
+.demon-tabs {
+  box-sizing: border-box;
+}
+
+.demon-tabs-nav {
+  margin-bottom: 20px;
+  .demon-tabs-nav-list {
+    border-bottom: 1px solid #f5f6f7;
+    display: flex;
+    .demon-tabs-tab {
+      margin-left: 30px;
+      padding: 12px 0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .demon-tabs-tab:nth-of-type(1) {
+      margin-left: 0;
+    }
+
+    .demon-tabs-tab-active {
+      border-bottom: 2px solid #1890ff;
+    }
+  }
+}
+
+.demon-tabs-content {
+  font-size: 14px;
+  .demon-tabs-tabpane {
+    display: none;
+  }
+  .demon-tabs-tabpane-active {
+    display: block;
+  }
+}
+
+.tabPosition {
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.tabPosition::-webkit-scrollbar {
+  display: none;
+}
