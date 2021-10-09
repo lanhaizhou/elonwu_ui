@@ -7,3 +7,4 @@ export * from '@elonwu/web-icon';
 export * from '@elonwu/web-empty';
 export * from '@elonwu/web-graph';
 export * from '@elonwu/web-tag';
+export * from '@elonwu/web-braft';
