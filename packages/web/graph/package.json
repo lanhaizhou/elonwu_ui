@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-graph",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "description": "elonwu web-graph",
   "source": "index.ts",

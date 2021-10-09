@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-button",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "description": "elonwu web button",
   "source": "index.ts",
