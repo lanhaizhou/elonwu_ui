@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.3.4...@elonwu/web@0.4.0) (2021-10-09)
+
+
+### Features
+
+* web 导出 braft ([4cc9d1b](https://github.com/ElonWu/elonwu_ui/commit/4cc9d1ba23771924078cf737222ca582d6583c7b))
+
+
+
+
+
 ## [0.3.4](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.3.3...@elonwu/web@0.3.4) (2021-10-09)
 
 **Note:** Version bump only for package @elonwu/web
