@@ -101,3 +101,6 @@ export const Braft = ({
     </div>
   );
 };
+
+export const applyPlugin = BraftEditor.use;
+export const createEditorState = BraftEditor.createEditorState;
