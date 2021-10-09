@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import BraftEditor from 'braft-editor';
 
-import { Braft } from '../src';
+import { Braft, createEditorState } from '../src';
 import { Card } from '@elonwu/web-card';
 
 export default {
@@ -10,7 +9,7 @@ export default {
 };
 
 export const BraftStory = () => {
-  const [value, setValue] = useState(BraftEditor.createEditorState());
+  const [value, setValue] = useState(createEditorState());
 
   const preview = useMemo(() => value?.toHTML() || '', [value]);
 
