@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "elonwu web",
   "source": "index.ts",
   "main": "dist/cjs/index.js",
@@ -50,7 +50,7 @@
     "@elonwu/web-form": "0.0.9",
     "@elonwu/web-graph": "0.1.4",
     "@elonwu/web-icon": "0.0.7",
-    "@elonwu/web-menu": "0.0.3",
+    "@elonwu/web-menu": "0.0.4",
     "@elonwu/web-tag": "0.1.2",
     "@elonwu/web-text": "0.1.2"
   },
