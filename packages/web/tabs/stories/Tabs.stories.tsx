@@ -1,22 +1,94 @@
 import React from 'react';
-import { Tabs } from '../index';
+import { Tabs, ITabsProps } from '../index';
 
 export default {
   title: 'Components/base/Tabs',
   component: Tabs,
+  argTypes: {
+    defaultActiveKey: {
+      name: 'defaultActiveKey',
+      description: '初始化选中面板的 key',
+      defaultValue: '',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        defaultValue: {
+          summary: '第一项',
+        },
+      },
+      control: { type: 'text' },
+    },
+    centered: {
+      name: 'centered',
+      description: '标签居中展示，tabPosition="top"时候有效',
+      defaultValue: false,
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+      control: { type: 'boolean' },
+    },
+    tabPosition: {
+      name: 'tabPosition',
+      description: '页签位置，可选值有 top left',
+      defaultValue: 'top',
+      table: {
+        type: {
+          summary: 'text',
+        },
+        defaultValue: {
+          summary: 'top',
+        },
+      },
+      options: ['top', 'left'],
+      control: {
+        type: 'select',
+        labels: { top: 'top', left: 'left' },
+      },
+    },
+    onChange: {
+      name: 'onChange',
+      description: '切换面板的回调',
+      table: {
+        type: {
+          summary: 'function(key)',
+        },
+      },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: '选项卡切换组件。',
+        source: {
+          type: 'code',
+          code: '',
+        },
+      },
+    },
+  },
 };
 
-export const TabsStory = (args: any) => {
+export const TabsStory = (args: ITabsProps) => {
   return (
     <Tabs
-      defaultActiveKey="1"
-      onChange={(key) => console.log(key)}
-      style={{ width: 200 }}
+      // defaultActiveKey="1"
+      // onChange={(key) => console.log(key)}
+      style={{ height: 274 }}
+      // style={{ width: 200 }}
+      // centered
+      // tabPosition="left"
+      {...args}
     >
       <Tabs.TabPane tab="Tab 1" key="1">
         Content of Tab Pane 1
       </Tabs.TabPane>
-      <Tabs.TabPane tab="Tab 2" key="2">
+      <Tabs.TabPane tab="Tab 2" key="2" disabled>
         Content of Tab Pane 2
       </Tabs.TabPane>
       <Tabs.TabPane tab="Tab 3" key="3">

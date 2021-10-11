@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import classNames from 'classnames';
 import './index.less';
 
@@ -6,6 +6,7 @@ export interface ITabPaneProps {
   tab: string;
   key: string;
   isActive?: boolean;
+  disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
