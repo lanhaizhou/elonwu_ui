@@ -4,6 +4,7 @@
   "private": false,
   "description": "elonwu web-portal",
   "source": "index.ts",
+  "types": "dist/lib/index.d.ts",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "exports": {
