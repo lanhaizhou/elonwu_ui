@@ -1,0 +1,16 @@
+@keyframes scaleIn {
+  from {
+    transform: scale(0) translateY(-10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+#Popover .overlay-container > div {
+  transform-origin: top left;
+  animation: scaleIn 0.25s ease-in-out 1;
+}

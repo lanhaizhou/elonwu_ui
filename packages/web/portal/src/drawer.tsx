@@ -6,13 +6,12 @@ import React, {
   CSSProperties,
 } from 'react';
 
-import './modal.css';
-
 import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
+import './drawer.css';
 
 const { Provider, useContext } = createContext('MediaQuery');
 
-export interface ModalProps {
+export interface DrawerProps {
   visible?: boolean;
   onChange: (visible: boolean) => void;
   contentStyle?: CSSProperties;
@@ -24,7 +23,7 @@ export interface ModalProps {
   triggerEvents?: TriggerEvent[];
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Drawer: FC<DrawerProps> = ({
   overlayStyle: overrideOverlayStyle,
   parentRef,
   children,
@@ -36,7 +35,7 @@ export const Modal: FC<ModalProps> = ({
         height: '100vh',
         background: `rgba(0,0,0,.2)`,
         display: 'grid',
-        placeContent: 'center',
+        placeContent: 'stretch flex-start',
         cursor: 'pointer',
       },
       overrideOverlayStyle,
@@ -44,7 +43,7 @@ export const Modal: FC<ModalProps> = ({
   }, [overrideOverlayStyle]);
 
   const { visible, onShow, onDismiss, portalContent } = usePortal({
-    portalType: 'Modal',
+    portalType: 'Drawer',
     content: children,
     overlayStyle,
     ...rest,
@@ -55,4 +54,4 @@ export const Modal: FC<ModalProps> = ({
   );
 };
 
-export const useModal = useContext;
+export const useDrawer = useContext;

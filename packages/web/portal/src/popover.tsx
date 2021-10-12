@@ -6,13 +6,18 @@ import React, {
   CSSProperties,
 } from 'react';
 
-import './modal.css';
+import {
+  createContext,
+  TriggerEvent,
+  usePortal,
+  Position,
+} from '@elonwu/hooks';
 
-import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
+import './popover.css';
 
 const { Provider, useContext } = createContext('MediaQuery');
 
-export interface ModalProps {
+export interface PopoverProps {
   visible?: boolean;
   onChange: (visible: boolean) => void;
   contentStyle?: CSSProperties;
@@ -22,31 +27,31 @@ export interface ModalProps {
 
   trigger: ReactElement;
   triggerEvents?: TriggerEvent[];
+  position?: Position;
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Popover: FC<PopoverProps> = ({
   overlayStyle: overrideOverlayStyle,
   parentRef,
   children,
+  position = 'bottomLeft',
   ...rest
 }) => {
   const overlayStyle = useMemo(() => {
     return Object.assign(
       {
-        height: '100vh',
-        background: `rgba(0,0,0,.2)`,
         display: 'grid',
-        placeContent: 'center',
-        cursor: 'pointer',
+        placeContent: 'stretch',
       },
       overrideOverlayStyle,
     );
   }, [overrideOverlayStyle]);
 
   const { visible, onShow, onDismiss, portalContent } = usePortal({
-    portalType: 'Modal',
+    portalType: 'Popover',
     content: children,
     overlayStyle,
+    position,
     ...rest,
   });
 
@@ -55,4 +60,4 @@ export const Modal: FC<ModalProps> = ({
   );
 };
 
-export const useModal = useContext;
+export const usePopover = useContext;

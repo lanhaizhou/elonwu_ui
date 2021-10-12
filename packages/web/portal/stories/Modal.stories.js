@@ -11,7 +11,7 @@ export default {
 };
 
 export const ModalStory = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   return (
     <div>
       <Title>{visible ? '打开' : '关闭'}</Title>
@@ -19,7 +19,7 @@ export const ModalStory = () => {
         visible={visible}
         onChange={setVisible}
         trigger={<Button>Show Modal</Button>}
-        triggerEvents={['hover']}
+        // triggerEvents={['hover']}
       >
         <ModalContent />
       </Modal>
@@ -31,9 +31,9 @@ const ModalContent = () => {
   const { visible, onDismiss } = useModal();
 
   return (
-    <div>
+    <>
       <Title>{visible ? '打开' : '关闭'}</Title>
       <Button onClick={onDismiss}>Close Modal</Button>
-    </div>
+    </>
   );
 };

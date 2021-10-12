@@ -14,43 +14,61 @@ import React, {
 
 import { isValidArray } from '@elonwu/utils';
 
-export type PortalType = 'Modal' | 'Notice' | 'Message' | 'Tooltip' | 'Popover';
+export type PortalType =
+  | 'Modal'
+  | 'Drawer'
+  | 'Notice'
+  | 'Message'
+  | 'Tooltip'
+  | 'Popover';
 
 export type TriggerEvent = 'click' | 'hover';
+
+export type Position =
+  | 'topLeft'
+  | 'top'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottom'
+  | 'bottomRight';
 
 export interface PortalProps {
   portalType: PortalType;
 
   visible?: boolean;
-  portalStyle?: CSSProperties;
+  contentStyle?: CSSProperties;
   overlayStyle?: CSSProperties;
   content?: ReactNode;
   onChange: (visible: boolean) => void;
 
   trigger: ReactElement;
   triggerEvents?: TriggerEvent[];
+  position?: Position;
 }
 
 export interface PortalResult {
   visible: boolean;
-  onShow: (visible: boolean) => void;
-  onDismiss: (visible: boolean) => void;
+  onShow: () => void;
+  onDismiss: () => void;
   portalContent: ReactNode;
 }
 
 export const usePortal = ({
   portalType,
-  portalStyle,
+  contentStyle,
   overlayStyle,
   visible: overrideVisible,
   content,
   onChange,
   trigger,
   triggerEvents,
+  position,
 }: PortalProps): PortalResult => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const [portal, setPortal] = useState<ReactPortal | null>();
+
+  const triggerRef: MutableRefObject<HTMLElement | undefined> = useRef();
 
   // 在 body 中增加 portal 容器
   const portalContainer: HTMLDivElement = useMemo(() => {
@@ -75,29 +93,41 @@ export const usePortal = ({
     const overlayContainer: HTMLDivElement | null = overlayRef.current;
 
     if (overlayContainer) {
-      const overlayId: string = `overlay-container-${Date.now()}`;
+      const overlayCls: string = `overlay-container`;
 
-      overlayContainer.id = overlayId;
+      overlayContainer.classList.add(overlayCls);
 
       portalContainer.appendChild(overlayContainer);
     }
   }, [portalContainer]);
 
-  const overridePortalStyle = useMemo(() => {
+  const overrideContentStyle = useMemo(() => {
+    let triggerPosition: CSSProperties = {};
+
+    if (position) {
+      const { top, left, width, height } = (
+        triggerRef?.current || document.body
+      ).getBoundingClientRect();
+      triggerPosition = {
+        position: 'absolute',
+        left,
+        top: top + height + 16,
+      };
+    }
+
     return Object.assign(
       {},
-      portalStyle,
+      contentStyle,
+      triggerPosition,
       visible
         ? { overflow: 'visible', opacity: 1, visibility: 'visible' }
         : {
             overflow: 'hidden',
             opacity: 0,
-            visibility: 'none',
-            padding: 0,
-            margin: 0,
+            visibility: 'hidden',
           },
     );
-  }, [portalStyle, visible]);
+  }, [contentStyle, visible, triggerRef, position]);
 
   // protal 容器样式
   useEffect(() => {
@@ -108,25 +138,15 @@ export const usePortal = ({
     portalContainer.style.left = '0px';
     portalContainer.style.right = '0px';
     portalContainer.style.height = '0px';
-
-    if (overridePortalStyle && Object?.keys(overridePortalStyle)) {
-      for (let [key, value] of Object.entries(overridePortalStyle)) {
-        portalContainer.style[key] = value;
-      }
-    }
-  }, [portalContainer, portalType, overridePortalStyle]);
+  }, [portalContainer, portalType]);
 
   // overlay 容器样式
   const overrideOverlayStyle = useMemo(() => {
     return Object.assign(
       // 默认样式
-      {
-        width: '100vw',
-        height: 0,
-      },
+      { width: '100vw' },
       overlayStyle,
-
-      visible ? { visibility: 'visible' } : { visibility: 'none' },
+      visible ? { visibility: 'visible' } : { visibility: 'hidden', hiehgt: 0 },
     );
   }, [overlayStyle, visible]);
 
@@ -145,32 +165,36 @@ export const usePortal = ({
   }, [overrideOverlayStyle]);
 
   const onShow = useCallback(() => {
-    const overlayContainer: HTMLDivElement | null = overlayRef.current;
-    const portal = ReactDOM.createPortal(content, overlayContainer);
-    setPortal(portal);
-
-    setVisible(true);
-    onChange && onChange(true);
-  }, [onChange, content]);
+    onChange ? onChange(true) : setVisible(true);
+  }, [onChange]);
 
   const onDismiss = useCallback(() => {
-    setPortal(null);
-
-    setVisible(false);
-    onChange && onChange(false);
+    onChange ? onChange(false) : setVisible(false);
   }, [onChange]);
 
   useEffect(() => {
     if (typeof overrideVisible === 'boolean' && visible !== overrideVisible) {
       setVisible(overrideVisible);
-
-      if (overrideVisible) {
-        onShow();
-      } else {
-        onDismiss();
-      }
     }
-  }, [visible, overrideVisible, content, onShow, onDismiss]);
+  }, [visible, overrideVisible]);
+
+  useEffect(() => {
+    if (visible) {
+      const overlayContainer: HTMLDivElement | null = overlayRef.current;
+
+      const contentId: string = `content-container-${Date.now()}`;
+      const contentContainer = React.createElement(
+        'div',
+        { id: contentId, style: overrideContentStyle },
+        content,
+      );
+
+      const portal = ReactDOM.createPortal(contentContainer, overlayContainer);
+      setPortal(portal);
+    } else {
+      setPortal(null);
+    }
+  }, [visible, content, overrideContentStyle]);
 
   const triggerDom = useMemo(() => {
     const eventProps: any = {};
@@ -193,13 +217,11 @@ export const usePortal = ({
     } else {
       eventProps.onClick = onShow;
     }
-    return React.cloneElement(trigger, eventProps);
-  }, [trigger, triggerEvents, onShow, onDismiss]);
-
-  console.log({
-    trigger,
-    triggerDom,
-  });
+    return React.cloneElement(
+      trigger,
+      Object.assign({}, eventProps, { ref: position ? triggerRef : null }),
+    );
+  }, [trigger, triggerEvents, onShow, position, onDismiss]);
 
   useEffect(() => {
     const overlayContainer: HTMLDivElement | null = overlayRef.current;

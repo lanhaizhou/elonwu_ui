@@ -1,18 +1,19 @@
 import React, {
   useMemo,
+  useEffect,
   FC,
   MutableRefObject,
   ReactElement,
   CSSProperties,
 } from 'react';
 
-import './modal.css';
-
 import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
+
+import './message.css';
 
 const { Provider, useContext } = createContext('MediaQuery');
 
-export interface ModalProps {
+export interface MessageProps {
   visible?: boolean;
   onChange: (visible: boolean) => void;
   contentStyle?: CSSProperties;
@@ -24,7 +25,7 @@ export interface ModalProps {
   triggerEvents?: TriggerEvent[];
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Message: FC<MessageProps> = ({
   overlayStyle: overrideOverlayStyle,
   parentRef,
   children,
@@ -33,26 +34,35 @@ export const Modal: FC<ModalProps> = ({
   const overlayStyle = useMemo(() => {
     return Object.assign(
       {
-        height: '100vh',
-        background: `rgba(0,0,0,.2)`,
         display: 'grid',
         placeContent: 'center',
-        cursor: 'pointer',
+        gap: 16,
+        padding: 16,
       },
       overrideOverlayStyle,
     );
   }, [overrideOverlayStyle]);
 
   const { visible, onShow, onDismiss, portalContent } = usePortal({
-    portalType: 'Modal',
+    portalType: 'Message',
     content: children,
     overlayStyle,
     ...rest,
   });
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (visible) timer = setTimeout(onDismiss, 2000);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [visible, onDismiss]);
 
   return (
     <Provider value={{ visible, onShow, onDismiss }}>{portalContent}</Provider>
   );
 };
 
-export const useModal = useContext;
+export const useMessage = useContext;
