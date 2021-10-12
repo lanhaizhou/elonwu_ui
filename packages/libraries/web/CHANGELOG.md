@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.3...@elonwu/web@0.4.4) (2021-10-12)
+
+
+### Bug Fixes
+
+* web 导出 portal ([bfe24e5](https://github.com/ElonWu/elonwu_ui/commit/bfe24e5ab59c72c76653852793310a7001d4acab))
+
+
+
+
+
 ## [0.4.3](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.2...@elonwu/web@0.4.3) (2021-10-12)
 
 **Note:** Version bump only for package @elonwu/web
