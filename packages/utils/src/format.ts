@@ -58,3 +58,7 @@ export const readPreviewUrl: (file: File) => void = (file) => {
     reader.onerror = (error) => reject(error);
   });
 };
+
+// 数字精度问题
+export const strip = (num: number, precision: number = 12): number =>
+  +parseFloat(num.toPrecision(precision));

@@ -3,8 +3,7 @@ import { Button } from '@elonwu/web';
 import { exportExcel } from '../src';
 
 export default {
-  title: 'Components/Utils/exportExcel',
-  // component: Button,
+  title: 'Utils/exportExcel',
 };
 
 export const ExportExcelStory = () => {
