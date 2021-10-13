@@ -1,12 +1,48 @@
 import React from 'react';
 import { Table } from '../src';
+import { ITableProps } from '../src';
 
 export default {
   title: 'Components/base/Table',
   component: Table,
+
+  argTypes: {
+    columns: {
+      name: 'columns',
+      description: '表格列的配置描述',
+    },
+    dataSource: {
+      name: 'dataSource',
+      description: '数据数组',
+      defaultValue: [],
+    },
+    pagination: {
+      name: 'pagination',
+      description: '分页数据',
+    },
+    onChange: {
+      name: 'onChange',
+      description: '分页变化时触发',
+    },
+    autoPagination: {
+      name: 'autoPagination',
+      description: '是否自动分页',
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: '展示行列数据。',
+      },
+      source: {
+        type: 'code',
+        code: '',
+      },
+    },
+  },
 };
 
-export const TableStory = () => {
+export const TableStory = (args: ITableProps) => {
   const columns = [
     {
       title: 'Name',
@@ -35,31 +71,14 @@ export const TableStory = () => {
     },
   ];
 
-  const data = [
-    {
-      name: 'Jack',
-      age: 28,
-      address: 'some where New York No. 1 Lake Park',
-      key: '1',
-      character: 'ambitious, brave, calm, compassionate, confident',
-    },
-    {
-      name: 'Rose',
-      age: 36,
-      address: 'some where',
-      key: '2',
-      character: 'dynamic',
-    },
-  ];
-
   const newData = () => {
     const d = [];
-    for (let i = 0; i < 175; i++) {
+    for (let i = 0; i < 165; i++) {
       const json = {
         name: 'Jack' + i,
         age: 28,
         address: 'some where New York No. 1 Lake Park',
-        key: String(i),
+        key: i,
         character: 'ambitious, brave, calm, compassionate, confident',
       };
       d.push(json);
@@ -70,6 +89,7 @@ export const TableStory = () => {
 
   return (
     <Table
+      {...args}
       columns={columns}
       dataSource={newData()}
       autoPagination

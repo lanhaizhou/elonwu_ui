@@ -22,9 +22,6 @@ export const Pagination = (props: IPagination) => {
     <div style={{ display: 'flex', justifyContent: 'center', ...style }}>
       <RcPagination
         prefixCls="demon-pagination"
-        // total={450}
-        // showSizeChanger
-        // showQuickJumper
         {...pagination}
         onChange={handleChange}
       />

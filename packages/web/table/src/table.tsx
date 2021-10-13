@@ -10,7 +10,7 @@ export interface IPaginationProps {
   pageSize?: number;
 }
 
-interface ITableProps {
+export interface ITableProps {
   columns: Array<object>;
   dataSource: Array<object>;
   pagination?: IPaginationProps;
@@ -25,7 +25,7 @@ interface IColumnProps {
   dataIndex?: string | string[];
   ellipsis?: boolean | { showTitle?: boolean };
   fixed?: boolean | string;
-  key?: string;
+  key?: string | number;
   render?: (
     value: any,
     record: object,

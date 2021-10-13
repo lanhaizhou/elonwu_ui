@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, IMenuProps } from '../src';
+import { Menu, IMenuCMPProps } from '../src';
 import { Icon } from '@elonwu/web-icon';
 import search from './assets/search.svg';
 import reload from './assets/reload.svg';
@@ -7,29 +7,9 @@ import userPlus from './assets/user_plus.svg';
 
 export default {
   title: 'Components/Base/Menu',
-  component: (
-    <Menu
-      onSelect={function (selectedIndex: string): void {
-        throw new Error('Function not implemented.');
-      }}
-    ></Menu>
-  ),
+  component: Menu,
 
   argTypes: {
-    defaultIndex: {
-      name: 'defaultIndex',
-      description: '初始选中的菜单项 key',
-      defaultValue: '0',
-      table: {
-        type: {
-          summary: 'string',
-        },
-        defaultValue: {
-          summary: '0',
-        },
-      },
-      control: { type: 'text' },
-    },
     defaultOpenKeys: {
       name: 'defaultOpenKeys',
       description: '初始展开的 SubMenu 菜单项 key 数组',
@@ -82,54 +62,71 @@ export default {
       // 代码示例
       source: {
         type: 'code',
-        code: `<Menu {...args}>
-        <Menu.Item>主页</Menu.Item>
-        <Menu.Item icon={<Icon src={search} />}>游戏运营</Menu.Item>
-        <Menu.Item icon={<Icon src={reload} />}>游戏管理</Menu.Item>
-        <Menu.Item disabled>角色管理</Menu.Item>
-        <Menu.SubMenu title="游戏数据分析" icon={<Icon src={userPlus} />}>
-          <Menu.Item>主页</Menu.Item>
-          <Menu.Item>新增分析</Menu.Item>
-          <Menu.Item>活跃分析</Menu.Item>
-          <Menu.SubMenu title="流失分析">
-            <Menu.Item>流失用户</Menu.Item>
-            <Menu.Item>回流用户</Menu.Item>
-          </Menu.SubMenu>
-        </Menu.SubMenu>
-        <Menu.SubMenu title="日志">
-          <Menu.Item>货币</Menu.Item>
-          <Menu.Item>背景</Menu.Item>
-          <Menu.Item>行为</Menu.Item>
-          <Menu.Item>角色</Menu.Item>
-        </Menu.SubMenu>
-      </Menu>`,
+        code: ``,
       },
     },
   },
 };
 
-export const MenuStory = (args: IMenuProps) => {
+export const MenuStory = (args: IMenuCMPProps) => {
+  const data = [
+    {
+      name: '主页',
+      key: '11',
+    },
+    {
+      name: '游戏运营',
+      icon: <Icon src={search} />,
+      key: '22',
+    },
+    {
+      name: '游戏管理',
+      icon: <Icon src={reload} />,
+      key: '33',
+    },
+    {
+      name: '角色管理',
+      disabled: true,
+      key: '44',
+    },
+    {
+      name: '游戏数据分析',
+      icon: <Icon src={userPlus} />,
+      key: 'sub1',
+      subMenus: [
+        {
+          name: '新增分析',
+          key: '55',
+        },
+        {
+          name: '活跃分析',
+          key: '66',
+        },
+        {
+          name: '流失分析',
+          key: 'sub2',
+          subMenus: [
+            {
+              name: '流失用户',
+              key: '77',
+            },
+            {
+              name: '回流用户',
+              key: '88',
+            },
+          ],
+        },
+      ],
+      showSubMenus: true,
+    },
+  ];
+
   return (
-    <Menu {...args}>
-      <Menu.Item>主页</Menu.Item>
-      <Menu.Item icon={<Icon src={search} />}>游戏运营</Menu.Item>
-      <Menu.Item icon={<Icon src={reload} />}>游戏管理</Menu.Item>
-      <Menu.Item disabled>角色管理</Menu.Item>
-      <Menu.SubMenu title="游戏数据分析" icon={<Icon src={userPlus} />}>
-        <Menu.Item>主页</Menu.Item>
-        <Menu.Item>新增分析</Menu.Item>
-        <Menu.Item>活跃分析</Menu.Item>
-        <Menu.SubMenu title="流失分析">
-          <Menu.Item>流失用户</Menu.Item>
-          <Menu.Item>回流用户</Menu.Item>
-        </Menu.SubMenu>
-      </Menu.SubMenu>
-      <Menu.SubMenu title="日志">
-        <Menu.Item>货币</Menu.Item>
-        <Menu.Item>背景</Menu.Item>
-        <Menu.Item>行为</Menu.Item>
-        <Menu.Item>角色</Menu.Item>
-      </Menu.SubMenu>
-    </Menu>
+    <Menu
+      {...args}
+      data={data}
+      defaultSelectedKey={'66'}
+      onSelect={(key) => console.log(key)}
+    />
   );
 };

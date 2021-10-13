@@ -1,23 +1,27 @@
 import React, { CSSProperties, useContext, useState } from 'react';
 import classNames from 'classnames';
-import { MenuContext } from './menu';
+import { MenuContext } from './menuMain';
 import { IMenuItemProps } from './menuItem';
-import IconComponent from './IconComponent';
+import IconComponent from './icons';
 import downSvg from '../stories/assets/down.svg';
 
 export interface ISubMenuProps {
   index?: string;
-  title: string;
+  title?: string;
   className?: string;
   icon?: React.ReactNode;
+  Ike?: string;
+  showSubMenus?: boolean;
 }
 
 export const SubMenu: React.FC<ISubMenuProps> = (props) => {
-  const { index, title, className = '', children, icon } = props;
-  const { index: ctxIndex, defaultOpenKeys, mode } = useContext(MenuContext);
+  const { index, title, className = '', children, icon, showSubMenus } = props;
+  const { key: ctxIndex, defaultOpenKeys, mode } = useContext(MenuContext);
   const openSubMenus = defaultOpenKeys as Array<string>;
   const isOpen =
-    index && mode === 'vertical' ? openSubMenus.includes(index) : false;
+    index && mode === 'vertical'
+      ? showSubMenus || openSubMenus.includes(index)
+      : false;
   const [menuOpen, setMenuOpen] = useState(isOpen);
 
   const classes = classNames('demon-menu-item demon-submenu-item', className, {
@@ -71,7 +75,10 @@ export const SubMenu: React.FC<ISubMenuProps> = (props) => {
       const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
       const { displayName } = childElement.type;
       if (displayName === 'MenuItem' || displayName === 'SubMenu') {
-        return React.cloneElement(childElement, { index: `${index}-${i}` });
+        return React.cloneElement(childElement, {
+          index: `${index}-${i}`,
+          Ike: childElement.key as string,
+        });
       } else {
         console.error('只能用<Menu.Item> <Menu.SubMenu>标签');
       }

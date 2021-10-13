@@ -1,93 +1,51 @@
-import React, { createContext, useState, FC } from 'react';
-import classNames from 'classnames';
-import { MenuItem, IMenuItemProps } from './menuItem';
-import { SubMenu, ISubMenuProps } from './subMenu';
-import './menu.css';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { IMenuProps, MenuMain } from './menuMain';
 
-type MenuMode = 'horizontal' | 'vertical';
-type SelectCallback = (selectedIndex: string) => void;
-
-interface IMenuContext {
-  index: string;
-  onSelect?: SelectCallback;
-  mode?: MenuMode;
-  defaultOpenKeys?: string[];
+interface IMenuDataProps {
+  key?: string;
+  name?: string;
+  icon?: ReactNode;
+  disabled?: boolean;
+  subMenus?: IMenuDataProps[];
+  showSubMenus?: boolean;
+  defaultSelected?: boolean;
 }
 
-export interface IMenuProps {
-  defaultIndex?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  mode?: MenuMode;
-  onSelect: SelectCallback;
-  defaultOpenKeys?: string[];
+export interface IMenuCMPProps extends IMenuProps {
+  data: IMenuDataProps[];
 }
 
-export const MenuContext = createContext<IMenuContext>({ index: '0' });
+export const Menu = (props: IMenuCMPProps) => {
+  const { data } = props;
 
-interface FC_CUSTOM<T> extends FC<T> {
-  Item: FC<IMenuItemProps>;
-  SubMenu: FC<ISubMenuProps>;
-}
-
-export const Menu: FC_CUSTOM<IMenuProps> = (props) => {
-  const {
-    defaultIndex,
-    className,
-    mode,
-    style,
-    onSelect,
-    children,
-    defaultOpenKeys,
-  } = props;
-
-  const classes = classNames('demon-menu', className, {
-    'demon-menu-vertical': mode === 'vertical',
-    'demon-menu-horizontal': mode !== 'vertical',
-  });
-
-  const [currentIndex, setCurrentIndex] = useState(defaultIndex);
-  const handleClick = (index: string) => {
-    setCurrentIndex(index);
-    onSelect && onSelect(index);
-  };
-
-  const contextValue: IMenuContext = {
-    index: currentIndex || '0',
-    onSelect: handleClick,
-    mode,
-    defaultOpenKeys,
-  };
-
-  const renderChildren = () => {
-    const childrenComponent = React.Children.map(children, (child, index) => {
-      const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
-      const { displayName } = childElement.type;
-      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
-        return React.cloneElement(childElement, {
-          index: `${index.toString()}`,
-        });
+  const renderMenu = (oriData: IMenuDataProps[]) => {
+    const node = oriData.map((item) => {
+      const { key, name, icon, disabled, subMenus, showSubMenus } = item;
+      if (subMenus && subMenus.length > 0) {
+        return (
+          <MenuMain.SubMenu key={key} title={name} showSubMenus={showSubMenus}>
+            {renderMenu(subMenus)}
+          </MenuMain.SubMenu>
+        );
       } else {
-        console.error('子项只能用<Menu.Item> <Menu.SubMenu>标签');
+        return (
+          <MenuMain.Item
+            key={key}
+            disabled={disabled}
+            icon={icon}
+            defaultSelected={item.defaultSelected}
+          >
+            {name}
+          </MenuMain.Item>
+        );
       }
     });
-    return childrenComponent;
+    return node;
   };
 
   return (
-    <ul className={classes} style={style}>
-      <MenuContext.Provider value={contextValue}>
-        {renderChildren()}
-      </MenuContext.Provider>
-    </ul>
+    <div>
+      <MenuMain {...props}>{renderMenu(data)}</MenuMain>
+    </div>
   );
 };
-
-Menu.defaultProps = {
-  defaultIndex: '0',
-  mode: 'horizontal',
-  defaultOpenKeys: [],
-};
-
-Menu.Item = MenuItem;
-Menu.SubMenu = SubMenu;
