@@ -23,6 +23,8 @@ export const UseIntersectionStory = () => {
     },
   });
 
+  console.log({ ratio });
+
   return (
     <div>
       <Title>

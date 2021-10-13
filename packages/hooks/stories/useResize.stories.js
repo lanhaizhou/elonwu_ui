@@ -11,7 +11,7 @@ export const UseResizeStory = () => {
   const targetRef = useRef();
   const rect = useResize(targetRef);
 
-  useEffect(() => console.log({ rect }), [rect]);
+  console.log({ rect });
 
   return (
     <div style={{ height: 200, overflow: 'auto', border: '1px solid #ededed' }}>

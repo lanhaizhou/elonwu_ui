@@ -1,4 +1,5 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
+import { debounce } from '@elonwu/utils';
 
 export const useResize = (
   targetRef: MutableRefObject<HTMLElement | undefined>,
@@ -15,13 +16,16 @@ export const useResize = (
     if (!target) return;
 
     // 设置观察对象
-    const observer = new ResizeObserver((entries: ResizeObserverEntry[]) =>
-      setRect(entries[0].contentRect),
+    const observer = new ResizeObserver(
+      debounce(
+        (entries: ResizeObserverEntry[]) => setRect(entries[0].contentRect),
+        20,
+      ),
     );
     observer.observe(target);
 
     return () => observer.disconnect();
-  }, [targetRef?.current]);
+  }, []);
 
   return rect;
 };

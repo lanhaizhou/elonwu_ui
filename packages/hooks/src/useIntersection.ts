@@ -1,12 +1,6 @@
-import {
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 
-import { strip, formatRound, isValidArray, notNil } from '@elonwu/utils';
+import { strip, formatRound, debounce } from '@elonwu/utils';
 
 export interface IntersectionObserverProps {
   rootRef?: MutableRefObject<HTMLElement | undefined>;
@@ -28,6 +22,7 @@ export const useIntersection = ({
   targetRef,
   options,
 }: IntersectionObserverProps): IntersectionObserverResult => {
+  // 初始化监听结果
   const [
     observeResult,
     setObserverResult,
@@ -44,24 +39,27 @@ export const useIntersection = ({
 
     // 初始化监听
     const observer = new IntersectionObserver(
-      (
-        entries: IntersectionObserverEntry[],
-        observer: IntersectionObserver,
-      ) => {
-        const {
-          intersectionRatio,
-          isIntersecting,
-          target,
-          // boundingClientRect, intersectionRect, rootBounds, time,
-        } = entries[0];
+      debounce(
+        (
+          entries: IntersectionObserverEntry[],
+          observer: IntersectionObserver,
+        ) => {
+          const {
+            intersectionRatio,
+            isIntersecting,
+            target,
+            // boundingClientRect, intersectionRect, rootBounds, time,
+          } = entries[0];
 
-        // 更新监测结果
-        setObserverResult({
-          visible: isIntersecting,
-          ratio: formatRound(intersectionRatio),
-          target,
-        });
-      },
+          // 更新监测结果
+          setObserverResult({
+            visible: isIntersecting,
+            ratio: formatRound(intersectionRatio),
+            target,
+          });
+        },
+        20,
+      ),
       {
         root: rootRef?.current || document,
         rootMargin: `${options?.margin || 0}px`,
@@ -73,7 +71,7 @@ export const useIntersection = ({
 
     // 关闭监听
     return () => observer.disconnect();
-  }, [rootRef, targetRef, options]);
+  }, []); // 不用加任何依赖，确保只触发创建一次监听
 
   return observeResult;
 };
