@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menuMain';
 import Icons from './icons';
@@ -8,13 +8,20 @@ export interface IMenuItemProps {
   disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
-  icon?: React.ReactNode;
+  icon?: string;
   Ike?: string;
-  defaultSelected?: boolean;
 }
 
 export const MenuItem: React.FC<IMenuItemProps> = (props) => {
-  const { index, disabled, className = '', style, children, icon, Ike } = props;
+  const {
+    index,
+    disabled,
+    className = '',
+    style,
+    children,
+    icon = '',
+    Ike,
+  } = props;
   const { onSelect, key: ctxKey } = useContext(MenuContext);
 
   const classes = classNames('demon-menu-item', className, {
@@ -32,7 +39,7 @@ export const MenuItem: React.FC<IMenuItemProps> = (props) => {
 
   return (
     <li className={classes} style={style} onClick={handleClick}>
-      <Icons icon={icon} />
+      {icon ? <Icons icon={icon} /> : ''}
       {children}
     </li>
   );

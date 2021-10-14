@@ -2,20 +2,27 @@ import React, { CSSProperties, useContext, useState } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menuMain';
 import { IMenuItemProps } from './menuItem';
-import IconComponent from './icons';
+import Icons from './icons';
 import downSvg from '../stories/assets/down.svg';
 
 export interface ISubMenuProps {
   index?: string;
   title?: string;
   className?: string;
-  icon?: React.ReactNode;
+  icon?: string;
   Ike?: string;
   showSubMenus?: boolean;
 }
 
 export const SubMenu: React.FC<ISubMenuProps> = (props) => {
-  const { index, title, className = '', children, icon, showSubMenus } = props;
+  const {
+    index,
+    title,
+    className = '',
+    children,
+    icon = '',
+    showSubMenus,
+  } = props;
   const { key: ctxIndex, defaultOpenKeys, mode } = useContext(MenuContext);
   const openSubMenus = defaultOpenKeys as Array<string>;
   const isOpen =
@@ -28,11 +35,11 @@ export const SubMenu: React.FC<ISubMenuProps> = (props) => {
     'is-active': ctxIndex.substr(0, 1) === index,
   });
 
-  const titleClasses = classNames('demon-submenu-title', className, {
+  const titleClasses = classNames('demon-submenu-title', {
     // 'title-is-active': ctxIndex.substr(0, 1) === index,
   });
 
-  const arrowClasses = classNames('demon-submenu-arrow', className, {
+  const arrowClasses = classNames('demon-submenu-arrow', {
     'rotate-vertical': mode === 'vertical' && menuOpen,
     'rotate-horizontal': mode === 'horizontal' && menuOpen,
   });
@@ -101,7 +108,7 @@ export const SubMenu: React.FC<ISubMenuProps> = (props) => {
   return (
     <li key={index} className={classes} {...hoverEvents}>
       <div className={titleClasses} {...clickEvents}>
-        <IconComponent icon={icon} />
+        <Icons icon={icon} />
         {title}
         <img
           className={arrowClasses}

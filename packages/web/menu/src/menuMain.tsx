@@ -16,7 +16,6 @@ interface IMenuContext {
 }
 
 export interface IMenuProps {
-  defaultIndex?: string;
   className?: string;
   style?: React.CSSProperties;
   mode?: MenuMode;
@@ -34,7 +33,6 @@ interface FC_CUSTOM<T> extends FC<T> {
 
 export const MenuMain: FC_CUSTOM<IMenuProps> = (props) => {
   const {
-    defaultIndex,
     className,
     mode,
     style,
@@ -66,7 +64,12 @@ export const MenuMain: FC_CUSTOM<IMenuProps> = (props) => {
     const childrenComponent = React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
       const { displayName } = childElement.type;
-      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+      if (displayName === 'MenuItem') {
+        return React.cloneElement(childElement, {
+          index: `${index.toString()}`,
+          Ike: childElement.key as string,
+        });
+      } else if (displayName === 'SubMenu') {
         return React.cloneElement(childElement, {
           index: `${index.toString()}`,
           Ike: childElement.key as string,
@@ -88,7 +91,6 @@ export const MenuMain: FC_CUSTOM<IMenuProps> = (props) => {
 };
 
 MenuMain.defaultProps = {
-  defaultIndex: '',
   mode: 'horizontal',
   defaultOpenKeys: [],
 };

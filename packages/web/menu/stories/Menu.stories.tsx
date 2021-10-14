@@ -1,6 +1,5 @@
 import React from 'react';
 import { Menu, IMenuCMPProps } from '../src';
-import { Icon } from '@elonwu/web-icon';
 import search from './assets/search.svg';
 import reload from './assets/reload.svg';
 import userPlus from './assets/user_plus.svg';
@@ -10,20 +9,20 @@ export default {
   component: Menu,
 
   argTypes: {
-    defaultOpenKeys: {
-      name: 'defaultOpenKeys',
-      description: '初始展开的 SubMenu 菜单项 key 数组',
-      defaultValue: [],
-      table: {
-        type: {
-          summary: 'string[]',
-        },
-        defaultValue: {
-          summary: [],
-        },
-      },
-      control: { type: 'text' },
-    },
+    // defaultOpenKeys: {
+    //   name: 'defaultOpenKeys',
+    //   description: '初始展开的 SubMenu 菜单项 key 数组',
+    //   defaultValue: [],
+    //   table: {
+    //     type: {
+    //       summary: 'string[]',
+    //     },
+    //     defaultValue: {
+    //       summary: [],
+    //     },
+    //   },
+    //   control: { type: 'text' },
+    // },
     mode: {
       name: 'mode',
       description: '菜单类型，现在支持垂直、水平',
@@ -76,12 +75,13 @@ export const MenuStory = (args: IMenuCMPProps) => {
     },
     {
       name: '游戏运营',
-      icon: <Icon src={search} />,
+      icon: search,
       key: '22',
+      render: (record) => <div style={{ color: 'red' }}>{record.name}</div>,
     },
     {
       name: '游戏管理',
-      icon: <Icon src={reload} />,
+      icon: reload,
       key: '33',
     },
     {
@@ -91,7 +91,7 @@ export const MenuStory = (args: IMenuCMPProps) => {
     },
     {
       name: '游戏数据分析',
-      icon: <Icon src={userPlus} />,
+      icon: userPlus,
       key: 'sub1',
       subMenus: [
         {
@@ -113,6 +113,35 @@ export const MenuStory = (args: IMenuCMPProps) => {
             {
               name: '回流用户',
               key: '88',
+            },
+          ],
+        },
+      ],
+      showSubMenus: true,
+    },
+    {
+      name: '日志',
+      key: 'sub2',
+      subMenus: [
+        {
+          name: '货币',
+          key: '99',
+        },
+        {
+          name: '道具',
+          key: '1010',
+        },
+        {
+          name: '行为',
+          key: 'sub3',
+          subMenus: [
+            {
+              name: '角色',
+              key: '1111',
+            },
+            {
+              name: '任务',
+              key: '1212',
             },
           ],
         },

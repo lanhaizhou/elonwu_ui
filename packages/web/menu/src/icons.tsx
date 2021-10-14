@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
+import { Icon } from '@elonwu/web-icon';
 
-const IconComponent = (props: {
-  icon?: React.ReactNode;
-}): React.ReactElement => {
+const IconComponent = (props: { icon: string }): React.ReactElement => {
   const { icon } = props;
   return (
     <span
@@ -13,7 +12,7 @@ const IconComponent = (props: {
         justifyContent: 'flex-start',
       }}
     >
-      {icon}
+      <Icon size={'md'} src={icon} />
     </span>
   );
 };

@@ -1,14 +1,14 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { IMenuProps, MenuMain } from './menuMain';
 
 interface IMenuDataProps {
   key?: string;
   name?: string;
-  icon?: ReactNode;
+  icon?: string;
   disabled?: boolean;
   subMenus?: IMenuDataProps[];
   showSubMenus?: boolean;
-  defaultSelected?: boolean;
+  render?: (record: IMenuDataProps) => ReactNode;
 }
 
 export interface IMenuCMPProps extends IMenuProps {
@@ -20,7 +20,15 @@ export const Menu = (props: IMenuCMPProps) => {
 
   const renderMenu = (oriData: IMenuDataProps[]) => {
     const node = oriData.map((item) => {
-      const { key, name, icon, disabled, subMenus, showSubMenus } = item;
+      const {
+        key,
+        name,
+        icon,
+        disabled,
+        subMenus,
+        showSubMenus,
+        render,
+      } = item;
       if (subMenus && subMenus.length > 0) {
         return (
           <MenuMain.SubMenu key={key} title={name} showSubMenus={showSubMenus}>
@@ -32,10 +40,9 @@ export const Menu = (props: IMenuCMPProps) => {
           <MenuMain.Item
             key={key}
             disabled={disabled}
-            icon={icon}
-            defaultSelected={item.defaultSelected}
+            icon={render ? '' : icon}
           >
-            {name}
+            {render ? render({ ...item }) : name}
           </MenuMain.Item>
         );
       }
