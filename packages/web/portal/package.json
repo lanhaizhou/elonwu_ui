@@ -1,8 +1,8 @@
 {
-  "name": "@elonwu/web-graph",
-  "version": "0.1.6",
+  "name": "@elonwu/web-portal",
+  "version": "0.0.6",
   "private": false,
-  "description": "elonwu web-graph",
+  "description": "elonwu web-portal",
   "source": "index.ts",
   "types": "dist/lib/index.d.ts",
   "main": "dist/cjs/index.js",
@@ -22,7 +22,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ElonWu/elonwu_ui.git",
-    "directory": "packages/web/graph"
+    "directory": "packages/web/portal"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
@@ -43,28 +43,30 @@
     ]
   },
   "peerDependencies": {
-    "@antv/data-set": "^0.11.8",
-    "@antv/g2": "^4.1.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@antv/g6": "^4.3.8",
-    "@elonwu/utils": "0.1.4",
-    "@elonwu/web-empty": "0.0.7",
+    "@elonwu/hooks": "0.1.5",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "twin.macro": "^2.7.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@rollup/plugin-babel": "^5.3.0",
-    "babel-plugin-macros": "^2.8.0",
+    "@types/react": "^17.0.24",
+    "babel-plugin-macros": "^3.1.0",
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-json": "^4.0.0"
+    "rollup-plugin-dts": "^4.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3"
   }
 }

@@ -1,11 +1,12 @@
 {
   "name": "@elonwu/web-menu",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "description": "elonwu web-menu",
-  "source": "index.js",
+  "source": "index.ts",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/lib/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
@@ -61,6 +62,7 @@
     "rollup": "^1.32.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-json": "^4.0.0"
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-svg": "^2.0.0"
   }
 }
