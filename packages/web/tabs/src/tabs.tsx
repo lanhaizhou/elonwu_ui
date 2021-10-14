@@ -1,11 +1,7 @@
-import React, { FC, createContext, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { TabPane, ITabPaneProps } from './tabPane';
 import './index.less';
-
-interface FC_CUSTOM<T> extends FC<T> {
-  TabPane: FC<ITabPaneProps>;
-}
 
 export interface ITabsProps {
   defaultActiveKey?: string;
@@ -16,7 +12,9 @@ export interface ITabsProps {
   tabPosition?: string;
 }
 
-export const Tabs: FC_CUSTOM<ITabsProps> = (props) => {
+export const Tabs: FC<ITabsProps> & { TabPane: FC<ITabPaneProps> } = (
+  props,
+) => {
   const {
     children,
     defaultActiveKey,
@@ -108,7 +106,6 @@ export const Tabs: FC_CUSTOM<ITabsProps> = (props) => {
       } else if (tabPosition === 'left') {
         current.scrollTop += event?.deltaY;
       }
-
     };
     current.addEventListener('wheel', scrollFunc, false);
     return () => {

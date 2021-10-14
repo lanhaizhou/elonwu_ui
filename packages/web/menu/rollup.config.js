@@ -1,6 +1,5 @@
 import svg from 'rollup-plugin-svg';
 import pkg from './package.json';
-import svg from 'rollup-plugin-svg';
 import { override } from '../../../rollup.config';
 
 const config = override(pkg, ({ tsConfig, dtsConfig }) => [

@@ -26,12 +26,10 @@ export interface IMenuProps {
 
 export const MenuContext = createContext<IMenuContext>({ key: '0' });
 
-interface FC_CUSTOM<T> extends FC<T> {
+export const MenuMain: FC<IMenuProps> & {
   Item: FC<IMenuItemProps>;
   SubMenu: FC<ISubMenuProps>;
-}
-
-export const MenuMain: FC_CUSTOM<IMenuProps> = (props) => {
+} = (props) => {
   const {
     className,
     mode,
