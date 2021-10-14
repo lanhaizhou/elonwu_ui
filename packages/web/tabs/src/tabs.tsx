@@ -45,7 +45,7 @@ export const Tabs: FC<ITabsProps> & { TabPane: FC<ITabPaneProps> } = (
   };
 
   useEffect(() => {
-    setActiveKey(defaultKey);
+    setActiveKey(defaultKey || defaultActiveKey);
   }, [defaultKeyFlag]);
 
   const renderNav = () => {
