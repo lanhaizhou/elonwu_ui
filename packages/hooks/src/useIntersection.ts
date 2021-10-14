@@ -1,20 +1,26 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import { MutableRefObject, useCallback, useEffect, useState } from 'react';
 
 import { strip, formatRound, debounce } from '@elonwu/utils';
 
 export interface IntersectionObserverProps {
+  targetRef: MutableRefObject<HTMLElement | undefined>;
   rootRef?: MutableRefObject<HTMLElement | undefined>;
-  targetRef?: MutableRefObject<HTMLElement | undefined>;
   options?: {
     step?: number;
     margin?: number;
   };
 }
 
-export interface IntersectionObserverResult {
+export interface IntersectionObservance {
   visible: boolean;
   ratio: number;
   target: Element | null;
+}
+
+export interface IntersectionObserverResult extends IntersectionObservance {
+  scrollIntoView: (
+    options?: boolean | undefined | ScrollIntoViewOptions,
+  ) => void;
 }
 
 export const useIntersection = ({
@@ -23,17 +29,14 @@ export const useIntersection = ({
   options,
 }: IntersectionObserverProps): IntersectionObserverResult => {
   // 初始化监听结果
-  const [
-    observeResult,
-    setObserverResult,
-  ] = useState<IntersectionObserverResult>({
+  const [observeResult, setObserverResult] = useState<IntersectionObservance>({
     visible: false,
     ratio: 0,
     target: null,
   });
 
   useEffect(() => {
-    const targetNode = targetRef?.current;
+    const targetNode = targetRef.current;
 
     if (!targetNode) return;
 
@@ -73,7 +76,14 @@ export const useIntersection = ({
     return () => observer.disconnect();
   }, []); // 不用加任何依赖，确保只触发创建一次监听
 
-  return observeResult;
+  const scrollIntoView = useCallback(
+    (options?: boolean | undefined | ScrollIntoViewOptions) => {
+      targetRef.current?.scrollIntoView(options);
+    },
+    [],
+  );
+
+  return Object.assign({}, observeResult, { scrollIntoView });
 };
 
 // 生成相交比例检测精度
