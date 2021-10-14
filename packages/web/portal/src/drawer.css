@@ -1,12 +1,10 @@
 @keyframes slideIn {
   from {
     transform: translateX(-100%);
-    /* opacity: 0; */
   }
 
   to {
     transform: translateY(0);
-    /* opacity: 1; */
   }
 }
 
@@ -20,8 +18,35 @@
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#Drawer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 0px;
+}
+
 #Drawer .overlay-container {
-  animation: fadeIn 0.25s ease-in-out 1;
+  animation: fadeIn 0.25s ease-in-out both;
 }
 
 #Drawer .overlay-container > div {
@@ -30,5 +55,13 @@
   border-radius: 8px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
 
-  animation: slideIn 0.25s ease-in-out 1;
+  animation: slideIn 0.25s ease-in-out both;
+}
+
+#Drawer .overlay-container.leaving {
+  animation: fadeOut 0.25s ease-in-out both;
+}
+
+#Drawer .overlay-container.leaving > div {
+  animation: slideOut 0.25s ease-in-out both;
 }

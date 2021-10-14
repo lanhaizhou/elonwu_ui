@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.6...@elonwu/web-portal@0.0.7) (2021-10-14)
+
+
+### Bug Fixes
+
+* 更新 portal, 增加退出动画 ([aa6e682](https://github.com/ElonWu/elonwu_ui/commit/aa6e682f65717ae3141b79704937cb4c099cfeb4))
+
+
+
+
+
 ## [0.0.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.5...@elonwu/web-portal@0.0.6) (2021-10-13)
 
 **Note:** Version bump only for package @elonwu/web-portal

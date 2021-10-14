@@ -11,6 +11,7 @@ import {
   TriggerEvent,
   usePortal,
   Position,
+  Offset,
 } from '@elonwu/hooks';
 
 import './popover.css';
@@ -28,6 +29,7 @@ export interface PopoverProps {
   trigger: ReactElement;
   triggerEvents?: TriggerEvent[];
   position?: Position;
+  offset?: Offset;
 }
 
 export const Popover: FC<PopoverProps> = ({

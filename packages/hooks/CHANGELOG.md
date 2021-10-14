@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/hooks@0.1.5...@elonwu/hooks@0.1.6) (2021-10-14)
+
+
+### Bug Fixes
+
+* 更新 portal, 增加退出动画 ([aa6e682](https://github.com/ElonWu/elonwu_ui/commit/aa6e682f65717ae3141b79704937cb4c099cfeb4))
+
+
+### Features
+
+* 封装原生 hook 简写 ([8b4f2e4](https://github.com/ElonWu/elonwu_ui/commit/8b4f2e42f0c3659733b0408c04c787ee1c9a89fd))
+* 增加滚动至可见区域 ([24200bf](https://github.com/ElonWu/elonwu_ui/commit/24200bf7be7bf5e88fd3dd8cdf5562379bb6406c))
+
+
+
+
+
 ## [0.1.5](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/hooks@0.1.4...@elonwu/hooks@0.1.5) (2021-10-13)
 
 **Note:** Version bump only for package @elonwu/hooks

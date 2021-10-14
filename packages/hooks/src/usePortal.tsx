@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+
 import React, {
   useCallback,
   useRef,
@@ -14,6 +15,7 @@ import React, {
 
 import { isValidArray } from '@elonwu/utils';
 
+// 弹出类型
 export type PortalType =
   | 'Modal'
   | 'Drawer'
@@ -22,34 +24,62 @@ export type PortalType =
   | 'Tooltip'
   | 'Popover';
 
-export type TriggerEvent = 'click' | 'hover';
+// 触发方式
+// TODO 待完善
+export type TriggerEvent = 'click' | 'hover' | 'safeHover';
 
+// 相对锚点的定位
 export type Position =
   | 'topLeft'
   | 'top'
   | 'topRight'
+  | 'leftTop'
+  | 'left'
+  | 'leftBottom'
   | 'bottomLeft'
   | 'bottom'
-  | 'bottomRight';
+  | 'bottomRight'
+  | 'rightTop'
+  | 'right'
+  | 'rightBottom';
+
+export interface Offset {
+  x?: number;
+  y?: number;
+}
 
 export interface PortalProps {
+  // 弹出类型， 用于选择不同容器
   portalType: PortalType;
 
-  visible?: boolean;
-  contentStyle?: CSSProperties;
-  overlayStyle?: CSSProperties;
+  // 弹出内容
   content?: ReactNode;
-  onChange: (visible: boolean) => void;
 
+  // 弹出触发器
   trigger: ReactElement;
   triggerEvents?: TriggerEvent[];
+
+  // 状态受控
+  visible?: boolean;
+  onChange: (visible: boolean) => void;
+
+  // 样式覆盖
+  contentStyle?: CSSProperties;
+  overlayStyle?: CSSProperties;
+
+  // 弹出内容根据锚点和相对距离定位， 默认以 target 为 锚点
+  anchorRef?: MutableRefObject<HTMLElement>;
   position?: Position;
+  offset?: Offset;
 }
 
 export interface PortalResult {
+  // 状态
   visible: boolean;
+  // 状态操作
   onShow: () => void;
   onDismiss: () => void;
+  // portal 内容， 用于渲染到界面
   portalContent: ReactNode;
 }
 
@@ -62,85 +92,48 @@ export const usePortal = ({
   onChange,
   trigger,
   triggerEvents,
+  anchorRef,
   position,
+  offset,
 }: PortalProps): PortalResult => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const [portal, setPortal] = useState<ReactPortal | null>();
 
-  const triggerRef: MutableRefObject<HTMLElement | undefined> = useRef();
+  const triggerRef = useRef<HTMLElement | undefined>();
 
-  // 在 body 中增加 portal 容器
+  /********************
+   * portal 容器
+   **/
   const portalContainer: HTMLDivElement = useMemo(() => {
+    // 优先复用容器
     let portalContainer: HTMLDivElement | null = document.body.querySelector(
       `#root ~ #${portalType}`,
     );
 
     if (!portalContainer) {
+      // 创建容器
       portalContainer = document.createElement('div');
+
+      portalContainer.id = portalType;
+
       document.body.appendChild(portalContainer);
     }
 
     return portalContainer;
   }, [portalType]);
 
-  // 在 portal 容器中增加 overlay 容器
-  const overlayRef: MutableRefObject<HTMLDivElement> = useRef(
-    document.createElement('div'),
-  );
+  /**
+   * portal 容器
+   ********************/
 
-  useEffect(() => {
-    const overlayContainer: HTMLDivElement | null = overlayRef.current;
-
-    if (overlayContainer) {
-      const overlayCls: string = `overlay-container`;
-
-      overlayContainer.classList.add(overlayCls);
-
-      portalContainer.appendChild(overlayContainer);
-    }
-  }, [portalContainer]);
-
-  const overrideContentStyle = useMemo(() => {
-    let triggerPosition: CSSProperties = {};
-
-    if (position) {
-      const { top, left, width, height } = (
-        triggerRef?.current || document.body
-      ).getBoundingClientRect();
-      triggerPosition = {
-        position: 'absolute',
-        left,
-        top: top + height + 16,
-      };
-    }
-
-    return Object.assign(
-      {},
-      contentStyle,
-      triggerPosition,
-      visible
-        ? { overflow: 'visible', opacity: 1, visibility: 'visible' }
-        : {
-            overflow: 'hidden',
-            opacity: 0,
-            visibility: 'hidden',
-          },
-    );
-  }, [contentStyle, visible, triggerRef, position]);
-
-  // protal 容器样式
-  useEffect(() => {
-    portalContainer.id = portalType;
-
-    portalContainer.style.position = 'absolute';
-    portalContainer.style.top = '0px';
-    portalContainer.style.left = '0px';
-    portalContainer.style.right = '0px';
-    portalContainer.style.height = '0px';
-  }, [portalContainer, portalType]);
+  /********************
+   * overlay 容器
+   **/
 
   // overlay 容器样式
+  const overlayRef = useRef<HTMLDivElement>(document.createElement('div'));
+
   const overrideOverlayStyle = useMemo(() => {
     return Object.assign(
       // 默认样式
@@ -151,25 +144,45 @@ export const usePortal = ({
   }, [overlayStyle, visible]);
 
   useEffect(() => {
-    const overlayContainer: HTMLDivElement | null = overlayRef.current;
+    const overlayContainer = overlayRef.current;
 
-    if (
-      overlayContainer &&
-      overrideOverlayStyle &&
-      Object?.keys(overrideOverlayStyle)
-    ) {
+    overlayContainer.classList.add(`overlay-container`);
+
+    // 覆盖样式
+    if (overrideOverlayStyle && Object?.keys(overrideOverlayStyle)?.length) {
       for (let [key, value] of Object.entries(overrideOverlayStyle)) {
         overlayContainer.style[key] = value;
       }
     }
-  }, [overrideOverlayStyle]);
 
+    // 添加到 portal 容器
+    portalContainer.appendChild(overlayContainer);
+
+    // 清除 overlay
+    return () => {
+      portalContainer.removeChild(overlayContainer);
+    };
+  }, [portalContainer, overrideOverlayStyle]);
+
+  /**
+   * overlay 容器
+   ********************/
+
+  /********************
+   * 状态控制
+   **/
   const onShow = useCallback(() => {
     onChange ? onChange(true) : setVisible(true);
   }, [onChange]);
 
   const onDismiss = useCallback(() => {
-    onChange ? onChange(false) : setVisible(false);
+    overlayRef?.current?.classList.add('leaving');
+
+    setTimeout(() => {
+      overlayRef?.current?.classList.remove('leaving');
+
+      onChange ? onChange(false) : setVisible(false);
+    }, 250);
   }, [onChange]);
 
   useEffect(() => {
@@ -178,24 +191,47 @@ export const usePortal = ({
     }
   }, [visible, overrideVisible]);
 
+  /**
+   * 状态控制
+   ********************/
+
+  /********************
+   * 内容
+   **/
+  const anchorPosition = useAnchorPosition({
+    position,
+    offset,
+    ref: anchorRef || triggerRef,
+  });
+
   useEffect(() => {
     if (visible) {
-      const overlayContainer: HTMLDivElement | null = overlayRef.current;
+      const overlayContainer = overlayRef.current;
 
       const contentId: string = `content-container-${Date.now()}`;
       const contentContainer = React.createElement(
         'div',
-        { id: contentId, style: overrideContentStyle },
+        {
+          id: contentId,
+          style: Object.assign({}, contentStyle, anchorPosition),
+        },
         content,
       );
 
+      // 将内容添加到 overlay
       const portal = ReactDOM.createPortal(contentContainer, overlayContainer);
       setPortal(portal);
     } else {
       setPortal(null);
     }
-  }, [visible, content, overrideContentStyle]);
+  }, [visible, content, contentStyle, anchorPosition]);
+  /**
+   * 内容
+   ********************/
 
+  /********************
+   * 触发器
+   **/
   const triggerDom = useMemo(() => {
     const eventProps: any = {};
 
@@ -208,9 +244,13 @@ export const usePortal = ({
 
           case 'hover':
             eventProps.onMouseEnter = onShow;
+            break;
+
+          case 'safeHover':
+            eventProps.onMouseEnter = onShow;
 
             // overlay 会导致错误
-            // eventProps.onMouseLeave = onDismiss;
+            eventProps.onMouseLeave = onDismiss;
             break;
         }
       });
@@ -221,12 +261,10 @@ export const usePortal = ({
       trigger,
       Object.assign({}, eventProps, { ref: position ? triggerRef : null }),
     );
-  }, [trigger, triggerEvents, onShow, position, onDismiss]);
-
-  useEffect(() => {
-    const overlayContainer: HTMLDivElement | null = overlayRef.current;
-    return () => overlayContainer?.remove();
-  }, []);
+  }, [trigger, triggerEvents, position, onShow, onDismiss]);
+  /**
+   * 触发器
+   ********************/
 
   return {
     visible,
@@ -239,4 +277,41 @@ export const usePortal = ({
       </>
     ),
   };
+};
+
+const useAnchorPosition = ({
+  position,
+  ref,
+  offset,
+}: {
+  position?: Position;
+  ref?: MutableRefObject<HTMLElement | undefined>;
+  offset?: Offset;
+}): CSSProperties | undefined => {
+  return useMemo(() => {
+    if (!position) return;
+
+    let anchorPosition: CSSProperties = { position: 'absolute' },
+      offsetX = offset?.x || 0,
+      offsetY = offset?.y || 0;
+
+    const { top, left, width, height } = (
+      ref?.current || document.body
+    ).getBoundingClientRect();
+
+    switch (position) {
+      case 'bottom':
+        anchorPosition.left = left + width / 2;
+        anchorPosition.top = top + height + offsetY;
+        break;
+
+      case 'bottomLeft':
+      default:
+        anchorPosition.left = left;
+        anchorPosition.top = top + height + offsetY;
+        break;
+    }
+
+    return anchorPosition;
+  }, [position, ref, offset]);
 };
