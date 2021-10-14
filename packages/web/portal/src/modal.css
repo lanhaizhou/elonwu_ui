@@ -1,12 +1,10 @@
 @keyframes scaleIn {
   from {
     transform: scale(0) translateY(-100%);
-    opacity: 0;
   }
 
   to {
     transform: scale(1) translateY(0);
-    opacity: 1;
   }
 }
 
@@ -20,8 +18,36 @@
   }
 }
 
+@keyframes scaleOut {
+  from {
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    transform: scale(0) translateY(-100%);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#Modal {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 0px;
+}
+
 #Modal .overlay-container {
-  animation: fadeIn 0.25s ease-in-out 1;
+  animation: fadeIn 0.25s ease-in-out both;
 }
 
 #Modal .overlay-container > div {
@@ -30,5 +56,13 @@
   border-radius: 8px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
 
-  animation: scaleIn 0.25s ease-in-out 1;
+  animation: scaleIn 0.25s ease-in-out both;
+}
+
+#Modal .overlay-container.leaving {
+  animation: fadeOut 0.25s ease-in-out both;
+}
+
+#Modal .overlay-container.leaving > div {
+  animation: scaleOut 0.25s ease-in-out both;
 }

@@ -7,6 +7,8 @@ export * from '@elonwu/web-form';
 export * from '@elonwu/web-graph';
 export * from '@elonwu/web-icon';
 export * from '@elonwu/web-menu';
+export * from '@elonwu/web-table';
+export * from '@elonwu/web-tabs';
 export * from '@elonwu/web-tag';
 export * from '@elonwu/web-text';
 export * from '@elonwu/web-portal';

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.7...@elonwu/web@0.4.8) (2021-10-14)
+
+
+### Features
+
+* 导出 tabs table ([0f369a2](https://github.com/ElonWu/elonwu_ui/commit/0f369a2e318ecc16b6737bf4d4c4e98d8e251ae0))
+
+
+
+
+
 ## [0.4.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.6...@elonwu/web@0.4.7) (2021-10-13)
 
 **Note:** Version bump only for package @elonwu/web

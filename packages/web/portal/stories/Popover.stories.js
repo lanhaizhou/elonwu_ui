@@ -19,28 +19,14 @@ export const PopoverStory = () => {
         visible={visible}
         onChange={setVisible}
         trigger={<Button>Show Popover</Button>}
+        triggerEvents={['safeHover']}
+        position="bottom"
+        offset={{ y: 16 }}
       >
-        <PopoverContent />
+        <Card>
+          <Title>This is popover.</Title>
+        </Card>
       </Popover>
     </div>
-  );
-};
-
-const PopoverContent = () => {
-  const { visible, onDismiss } = usePopover();
-
-  return (
-    <Card
-      style={{
-        // width: 400,
-        // height: '100%',
-        overflow: 'auto',
-        display: 'grid',
-        placeContent: 'center',
-      }}
-    >
-      <Title>{visible ? '打开' : '关闭'}</Title>
-      <Button onClick={onDismiss}>Close Popover</Button>
-    </Card>
   );
 };

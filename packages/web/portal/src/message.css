@@ -10,10 +10,34 @@
   }
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+#Message {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 0px;
+}
+
 #Message .overlay-container > div {
   padding: 16px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   animation: slideDown 0.25s ease-in-out 1;
+}
+
+#Message .overlay-container.leaving > div {
+  animation: slideUp 0.25s ease-in-out both;
 }
