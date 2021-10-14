@@ -1,0 +1,118 @@
+.demon-tabs {
+  box-sizing: border-box;
+}
+
+.ant-tabs-top {
+  .demon-tabs-nav {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f5f6f7;
+    .demo-tabs-nav-wrap {
+      display: flex;
+      .demon-tabs-nav-list {
+        display: flex;
+        .demon-tabs-tab {
+          margin-left: 30px;
+          padding: 12px 0;
+          cursor: pointer;
+          font-size: 14px;
+        }
+        .demon-tabs-tab:nth-of-type(1) {
+          margin-left: 0;
+        }
+        .demon-tabs-tab:hover {
+          color: #1890ff;
+        }
+        .demon-tabs-tab-active {
+          border-bottom: 2px solid #1890ff;
+          color: #1890ff;
+        }
+
+        .demon-tabs-tab-disabled {
+          color: #00000040 !important;
+          cursor: not-allowed;
+          background: 0 0;
+        }
+      }
+    }
+    .demo-tabs-nav-wrap-center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .demon-tabs-content {
+    font-size: 14px;
+    .demon-tabs-tabpane {
+      display: none;
+    }
+    .demon-tabs-tabpane-active {
+      display: block;
+    }
+  }
+  .tabPosition {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+.ant-tabs-left {
+  display: flex;
+  .demon-tabs-nav {
+    margin-right: 20px;
+    height: inherit;
+    .demo-tabs-nav-wrap {
+      height: inherit;
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+      .demon-tabs-nav-list {
+        border-right: 1px solid #f5f6f7;
+        display: flex;
+        flex-direction: column;
+        .demon-tabs-tab {
+          margin-top: 16px;
+          padding: 8px 24px;
+          cursor: pointer;
+          font-size: 14px;
+        }
+        .demon-tabs-tab-active {
+          border-right: 2px solid #1890ff;
+          color: #1890ff;
+        }
+        .demon-tabs-tab:nth-of-type(1) {
+          margin-top: 0;
+        }
+        .demon-tabs-tab:hover {
+          color: #1890ff;
+        }
+        .demon-tabs-tab-disabled {
+          color: #00000040 !important;
+          cursor: not-allowed;
+          background: 0 0;
+        }
+      }
+    }
+    .demo-tabs-nav-wrap-center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .demon-tabs-content {
+    font-size: 14px;
+    .demon-tabs-tabpane {
+      display: none;
+    }
+    .demon-tabs-tabpane-active {
+      display: block;
+    }
+  }
+  .tabPosition {
+    white-space: nowrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.tabPosition::-webkit-scrollbar {
+  display: none;
+}
