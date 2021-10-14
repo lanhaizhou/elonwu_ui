@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-chart",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "private": false,
   "description": "elonwu web-chart",
   "source": "index.ts",
@@ -49,7 +49,7 @@
   "dependencies": {
     "@antv/data-set": "^0.11.8",
     "@antv/g2": "^4.1.21",
-    "@elonwu/utils": "0.1.2",
+    "@elonwu/utils": "0.1.4",
     "@elonwu/web-empty": "0.0.7",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",

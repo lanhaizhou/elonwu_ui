@@ -3,7 +3,7 @@ import tw, { styled, css } from 'twin.macro';
  *  Card
  */
 interface CardProps {
-  full: Boolean;
+  full?: Boolean;
 }
 
 export const Card = styled.div<CardProps>(({ full = true }) => {
