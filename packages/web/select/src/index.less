@@ -1,0 +1,61 @@
+.demon-select-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: rgb(33, 36, 37);
+  }
+
+  .options-box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    place-content: start;
+    place-items: start;
+    .all {
+      margin: 0 10px 10px 0;
+      padding: 4px 8px;
+      border: 1px solid rgb(209, 209, 216);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgb(209, 209, 216);
+      line-height: 18px;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 600px;
+      .options-item {
+        margin: 0 10px 10px 0;
+        padding: 4px 8px;
+        border: 1px solid rgb(209, 209, 216);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgb(209, 209, 216);
+        line-height: 18px;
+      }
+      .select {
+        border: 1px solid rgb(51, 156, 255);
+        color: rgb(51, 156, 255);
+      }
+    }
+
+    .select {
+      border: 1px solid rgb(51, 156, 255);
+      color: rgb(51, 156, 255);
+    }
+    .disabled {
+      color: #00000040 !important;
+      cursor: not-allowed !important;
+      background: 0 0 !important;
+    }
+  }
+}

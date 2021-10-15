@@ -49,7 +49,6 @@ export const Toggle: FC<IToggleProps> = (props) => {
   }, [unCheckedText]);
 
   const handleClick = () => {
-    
     setToggle(!toggle);
     onChange && onChange(!toggle);
   };
