@@ -17,10 +17,9 @@ export const useResize = (
 
     // 设置观察对象
     const observer = new ResizeObserver(
-      debounce(
-        (entries: ResizeObserverEntry[]) => setRect(entries[0].contentRect),
-        20,
-      ),
+      debounce((entries: ResizeObserverEntry[]) => {
+        setRect(entries[0].target.getBoundingClientRect());
+      }, 20),
     );
     observer.observe(target);
 
