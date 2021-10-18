@@ -60,6 +60,7 @@ export const SelectStory = () => {
         isNew
         style={{ width: 300 }}
       />
+      <div style={{ height: 10, width: 10 }}></div>
       <Select
         options={options}
         onChange={(value, option) => {
