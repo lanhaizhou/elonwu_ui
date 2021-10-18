@@ -1,4 +1,11 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, {
+  FC,
+  useEffect,
+  useMemo,
+  useState,
+  CSSProperties,
+  useCallback,
+} from 'react';
 import classnames from 'classnames';
 import {
   ButtonSelectSvg,
@@ -7,15 +14,21 @@ import {
   checkboxUnSelectSvg,
 } from './assets';
 import './index.less';
-import { Icon, IconProps } from '@elonwu/web-icon';
-import { Text } from '@elonwu/web-text';
+import { Icon, IconSize } from '@elonwu/web-icon';
+import { Text, TextSize } from '@elonwu/web-text';
 
-type iconType = 'radio' | 'checkbox' | 'switch';
-interface IToggleProps extends Pick<IconProps, 'size' | 'style'> {
-  type: iconType;
+export type ToggelType = 'radio' | 'checkbox' | 'switch';
+
+export type ToggleSize = 'lg' | 'md' | 'sm';
+
+interface IToggleProps {
+  type: ToggelType;
   checkedText?: string;
   unCheckedText?: string;
   onChange?: (select: boolean) => void;
+
+  size?: ToggleSize | number;
+  style?: CSSProperties;
 }
 
 const types = {
@@ -30,11 +43,13 @@ export const Toggle: FC<IToggleProps> = (props) => {
     checkedText = '',
     unCheckedText = '',
     children,
+
+    size,
     ...rest
   } = props;
   const [toggle, setToggle] = useState(false);
-  const [selectSvg, setSelectSvg] = useState('');
-  const [unSelectSvg, setUnSelectSvg] = useState('');
+
+  const [selectSvg, unSelectSvg] = useMemo(() => types[type] || [], [type]);
 
   const switchClass = classnames('demon-switch', {
     'demon-switch-checked': toggle,
@@ -48,29 +63,37 @@ export const Toggle: FC<IToggleProps> = (props) => {
     return unCheckedText.slice(0, 2);
   }, [unCheckedText]);
 
-  const handleClick = () => {
-    setToggle(!toggle);
-    onChange && onChange(!toggle);
-  };
+  const handleClick = useCallback(() => {
+    setToggle((prev) => {
+      onChange && onChange(!prev);
+      return !prev;
+    });
+  }, []);
 
-  const renderChildren = () => {
+  const renderChildren = (size: ToggleSize | number | undefined) => {
     return (
-      <>{typeof children === 'string' ? <Text>{children}</Text> : children}</>
+      <>
+        {typeof children === 'string' ? (
+          <Text size={(size || 'md') as TextSize}>{children}</Text>
+        ) : (
+          children
+        )}
+      </>
     );
   };
 
-  const render = (type: iconType) => {
+  const render = (type: ToggelType, size: ToggleSize | number | undefined) => {
     if (type === 'radio' || type === 'checkbox') {
       return (
         <>
           <Icon
             src={toggle ? selectSvg : unSelectSvg}
             type="ghost"
-            size="lg"
+            size={(size || 'lg') as IconSize}
             style={{ fill: toggle ? '#1890ff' : '#d9d9d9' }}
             {...rest}
           />
-          {renderChildren()}
+          {renderChildren(size)}
         </>
       );
     } else if (type === 'switch') {
@@ -82,21 +105,14 @@ export const Toggle: FC<IToggleProps> = (props) => {
               {toggle ? checkedTexts : unCheckedTexts}
             </div>
           </button>
-          {renderChildren()}
+          {renderChildren(size)}
         </>
       );
     }
   };
-
-  useEffect(() => {
-    const [selectSrc, unSelectSrc] = types[type] || ['', ''];
-    setSelectSvg(selectSrc);
-    setUnSelectSvg(unSelectSrc);
-  }, [type]);
-
   return (
     <span className="demon-switch-wrapper" onClick={handleClick}>
-      {render(type)}
+      {render(type, size)}
     </span>
   );
 };
