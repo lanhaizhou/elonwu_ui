@@ -1,8 +1,9 @@
 import React, { CSSProperties, FC } from 'react';
 import { OldSelect } from './oldSelect';
 import { NewSelect } from './newSelect';
+import { StylesConfig } from 'react-select';
 
-type valueType = string | string[];
+type valueType = string | string[] | IOptions[];
 type optionType = IOptions | IOptions[] | '';
 
 export interface IOptions {
@@ -21,7 +22,11 @@ interface ISelectProps {
   style?: CSSProperties;
 }
 
-interface INewSelectProps {}
+interface INewSelectProps {
+  disabled?: boolean;
+  placeholder?: string;
+  styles?: StylesConfig;
+}
 
 export type SelectProps = ISelectProps & INewSelectProps;
 

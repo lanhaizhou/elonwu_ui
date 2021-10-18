@@ -64,7 +64,7 @@ export const useIntersection = (options?: {
         threshold,
       },
     );
-  }, [rootRef?.current, options]);
+  }, [options]);
 
   useEffect(() => {
     const observer = observerRef?.current;
@@ -75,7 +75,7 @@ export const useIntersection = (options?: {
     return () => {
       if (canObserve) observer.unobserve(target);
     };
-  }, [targetRef?.current, observerRef?.current]);
+  }, [observerRef?.current]);
 
   return { root: rootRef, target: targetRef, ...observeResult };
 };

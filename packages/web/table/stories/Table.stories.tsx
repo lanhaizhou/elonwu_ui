@@ -3,7 +3,7 @@ import { Table } from '../src';
 import { ITableProps } from '../src';
 
 export default {
-  title: 'Components/base/Table',
+  title: 'Components/Base/Table',
   component: Table,
 
   argTypes: {

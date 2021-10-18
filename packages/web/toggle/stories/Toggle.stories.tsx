@@ -2,7 +2,7 @@ import React from 'react';
 import { Toggle } from '../src';
 
 export default {
-  title: 'Components/base/toggle',
+  title: 'Components/Form/Toggle',
   component: Toggle,
 };
 
@@ -13,10 +13,26 @@ export const ToggleStory = () => {
         <Toggle type="radio" size="lg">
           Radio
         </Toggle>
+
+        <Toggle type="radio" size="md">
+          Radio
+        </Toggle>
+
+        <Toggle type="radio" size="sm">
+          Radio
+        </Toggle>
       </div>
       <div style={{ padding: '4px 0' }}>
+        <Toggle type="checkbox" size="lg">
+          checkbox
+        </Toggle>
+
         <Toggle type="checkbox" size="md">
-          <span style={{ color: 'skyblue' }}>checkbox</span>
+          checkbox
+        </Toggle>
+
+        <Toggle type="checkbox" size="sm">
+          checkbox
         </Toggle>
       </div>
       <div style={{ padding: '4px 0' }}>

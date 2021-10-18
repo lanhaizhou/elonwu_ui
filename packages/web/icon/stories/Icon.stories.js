@@ -6,7 +6,7 @@ import { Icon } from '../src';
  */
 import search from './assets/search.svg';
 export default {
-  title: 'Components/base/Icon',
+  title: 'Components/Base/Icon',
   component: Icon,
 
   // 参数值、参数文档

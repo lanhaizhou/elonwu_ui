@@ -12,3 +12,5 @@ export * from '@elonwu/web-tabs';
 export * from '@elonwu/web-tag';
 export * from '@elonwu/web-text';
 export * from '@elonwu/web-portal';
+export * from '@elonwu/web-toggle';
+export * from '@elonwu/web-select';

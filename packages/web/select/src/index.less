@@ -11,12 +11,14 @@
 
   .options-box {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: max-content 1fr;
+    // grid-template-columns: auto 1fr;
     gap: 10px;
     place-content: start;
     place-items: start;
     .all {
-      margin: 0 10px 10px 0;
+      // margin: 0 10px 10px 0;
+      margin: 0 0 10px 0;
       padding: 4px 8px;
       border: 1px solid rgb(209, 209, 216);
       border-radius: 4px;
@@ -57,5 +59,12 @@
       cursor: not-allowed !important;
       background: 0 0 !important;
     }
+  }
+}
+
+.demon-select {
+  & > .demon__control {
+    border-radius: 2px;
+    font-size: 14px;
   }
 }

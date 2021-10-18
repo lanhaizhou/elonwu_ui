@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-graph@0.1.6...@elonwu/web-graph@0.1.7) (2021-10-18)
+
+**Note:** Version bump only for package @elonwu/web-graph
+
+
+
+
+
 ## [0.1.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-graph@0.1.5...@elonwu/web-graph@0.1.6) (2021-10-13)
 
 **Note:** Version bump only for package @elonwu/web-graph
