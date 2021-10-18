@@ -5,7 +5,7 @@ import { SerializedStyles } from '@emotion/cache/node_modules/@emotion/utils';
  *  Text
  */
 // 文本大小
-type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 // 文本参数
 interface TextProps {
@@ -15,7 +15,7 @@ interface TextProps {
 }
 
 // 链接装饰类型
-type LinkDecration = 'dot' | 'dash' | 'wave' | 'none' | 'underline';
+export type LinkDecration = 'dot' | 'dash' | 'wave' | 'none' | 'underline';
 
 // 链接参数
 interface LinkProps extends TextProps {
