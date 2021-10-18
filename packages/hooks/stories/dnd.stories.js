@@ -1,135 +1,11 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useDrag, useDrop } from '../src';
-import { Title } from '@elonwu/web';
+import { Title, Card } from '@elonwu/web';
+
+import './dnd.style.css';
 
 export default {
   title: 'Hooks/DragAndDrop',
-};
-
-export const DndStory = () => {
-  const [tasks, setTasks] = useState([1, 2, 3, 4, 5]);
-  const [completes, setCompletes] = useState([6]);
-
-  const onCompleteDrop = useCallback((e, { target, data }) => {
-    target.style.background = '#f5f5f5';
-
-    if (data?.type === 'incomplete') {
-      setTasks((prev) => prev.filter((el) => el !== data?.li));
-
-      setCompletes((prev) => prev.concat(data?.li));
-    }
-  }, []);
-
-  const onInCompleteDrop = useCallback((e, { target, data }) => {
-    target.style.background = '#f5f5f5';
-    if (data?.type === 'complete') {
-      setTasks((prev) => prev.concat(data?.li));
-      setCompletes((prev) => prev.filter((el) => el !== data?.li));
-    }
-  }, []);
-
-  const onDropToInCompleteItem = useCallback(
-    (data, dropI) => {
-      console.log({ data, dropI });
-
-      const dropIndex = completes.findIndex((el) => el === dropI);
-
-      if (dropIndex < 0) return;
-
-      let item;
-      if (data?.type === 'incomplete') {
-        item = tasks.find((el) => el === data?.li);
-      } else if (data?.type === 'complete') {
-        item = completes.find((el) => el === data?.li);
-      }
-    },
-    [tasks, completes],
-  );
-
-  const onDropToCompleteItem = useCallback(
-    (data, dropI) => {
-      console.log({ data, dropI });
-
-      const dropIndex = completes.findIndex((el) => el === dropI);
-
-      if (dropIndex < 0) return;
-
-      let item;
-      if (data?.type === 'incomplete') {
-        item = tasks.find((el) => el === data?.li);
-      } else if (data?.type === 'complete') {
-        item = completes.find((el) => el === data?.li);
-      }
-    },
-    [tasks, completes],
-  );
-
-  const onDragOver = (e, { target }) => {
-    target.style.background = 'lightblue';
-  };
-  const onDragLeave = (e, { target }) => {
-    target.style.background = '#f5f5f5';
-  };
-
-  return (
-    <div
-      style={{
-        display: 'grid',
-        gap: 24,
-        gridTemplateColumns: 'repeat(2, 1fr)',
-      }}
-    >
-      {/* 未完成 */}
-      <div>
-        <Title>未完成</Title>
-        <DropBox
-          onDrop={onInCompleteDrop}
-          onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
-        >
-          {tasks.map((li) => (
-            <DragBox
-              key={li}
-              onDragStart={(e, { target, setDataTransfer }) => {
-                target.classList.add('dragging');
-                setDataTransfer({ data: { li, type: 'incomplete' } });
-              }}
-              onDrop={(e, { target, data }) => {
-                onDropToInCompleteItem(data, li);
-              }}
-            >
-              {li}
-            </DragBox>
-          ))}
-        </DropBox>
-      </div>
-
-      {/* 完成 */}
-      <div>
-        <Title>完成</Title>
-        <DropBox
-          onDrop={onCompleteDrop}
-          onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
-        >
-          {completes.map((li) => (
-            <DragBox
-              key={li}
-              onDragStart={(e, { target, setDataTransfer }) => {
-                target.classList.add('dragging');
-                setDataTransfer({ data: { li, type: 'complete' } });
-              }}
-              onDrop={(e, { target, data }) => {
-                onDropToCompleteItem(data?.li, li);
-              }}
-            >
-              {li}
-            </DragBox>
-          ))}
-        </DropBox>
-      </div>
-    </div>
-  );
 };
 
 const DropBox = ({
@@ -138,52 +14,225 @@ const DropBox = ({
   onDragEnter,
   onDragOver,
   onDragLeave,
+  ...rest
 }) => {
   const dropRef = useRef();
 
   useDrop(dropRef, { onDrop, onDragEnter, onDragOver, onDragLeave });
 
   return (
-    <div
-      ref={dropRef}
-      style={{
-        background: '#f5f5f5',
-        border: '1px solid #ededed',
-        borderRadius: 8,
-        padding: 16,
-        width: 400,
-        height: 400,
-
-        display: 'grid',
-        gap: 12,
-        placeContent: 'flex-start stretch',
-        // placeItems: 'flex-start stretch',
-        overflow: 'auto',
-      }}
-    >
+    <div ref={dropRef} {...rest}>
       {children}
     </div>
   );
 };
 
-const DragBox = ({ children, onDragStart, onDrop }) => {
+const DragBox = ({
+  children,
+  // drag 相关
+  onDragStart,
+  onDragEnd,
+
+  // drop 相关
+  onDragOver,
+  onDragLeave,
+  onDrop,
+
+  ...rest
+}) => {
   const ref = useRef();
 
-  useDrag(ref, { onDragStart });
-  useDrop(ref, { onDrop });
+  useDrag(ref, { onDragStart, onDragEnd });
+  useDrop(ref, { onDragOver, onDragLeave, onDrop });
+
+  return (
+    <div ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+export const DndTODOStoty = () => {
+  const [groups, setGroups] = useState([
+    {
+      key: 'todo',
+      title: '未开始',
+      list: [
+        { id: 1, content: 'xxx1' },
+        { id: 2, content: 'xxx2' },
+      ],
+    },
+    {
+      key: 'working',
+      title: '进行中',
+      list: [
+        { id: 5, content: 'xxx5' },
+        { id: 6, content: 'xxx6' },
+      ],
+    },
+    {
+      key: 'xxxx',
+      title: 'xxx',
+      list: [
+        { id: 7, content: 'xxx7' },
+        { id: 8, content: 'xxx8' },
+      ],
+    },
+    {
+      key: 'complete',
+      title: '已结束',
+      list: [
+        { id: 3, content: 'xxx3' },
+        { id: 4, content: 'xxx4' },
+      ],
+    },
+  ]);
 
   return (
     <div
-      ref={ref}
       style={{
-        background: '#fff',
-        border: '1px solid #ededed',
-        borderRadius: 8,
-        padding: 16,
-        transition: 'all .2s ease',
+        width: '100vw',
+        overflow: 'auto',
+        display: 'grid',
+        gap: 12,
+        gridAutoFlow: 'column',
+        placeContent: 'flex-start',
       }}
     >
-      {children}
+      {groups.map((group) => (
+        <Group key={group.key} group={group} setGroups={setGroups} />
+      ))}
     </div>
+  );
+};
+
+const Group = ({ group: { key: type, title, list }, setGroups }) => {
+  const onItemDragStart = useCallback(
+    (e, { target, setDataTransfer }, id, type) => {
+      target.classList.add('dragging');
+      setDataTransfer({ data: { id, type } });
+    },
+    [],
+  );
+  const onItemDragEnd = useCallback((e, { target }) => {
+    target.classList.remove('dragging');
+  }, []);
+
+  const onDragOverItem = useCallback((e, { target }, id, type) => {
+    target.classList.add('hovering');
+  }, []);
+
+  const onDragLeaveItem = useCallback((e, { target }, id, type) => {
+    target.classList.remove('hovering');
+  }, []);
+
+  const onDropToItem = useCallback((e, { target, data }, id, type) => {
+    // 去除 hovering
+    target.classList.remove('hovering');
+
+    // 不再触发 Group 的 drop 事件
+    e.stopPropagation();
+
+    const prevType = data.type,
+      nextType = type,
+      prevId = data?.id,
+      nextId = id;
+
+    if (!prevType || !nextType || !prevId || !nextId) return;
+
+    setGroups((prevGroups) => {
+      const result = prevGroups.slice();
+
+      // 找到之前的列表和元素
+      const prevGroup = result.find((g) => g.key === prevType);
+      const moveItem = prevGroup.list.find((el) => el.id === prevId);
+
+      // 从之前的列表中去除元素
+      prevGroup.list = prevGroup.list.filter((el) => el.id !== prevId);
+
+      // 修改之后的列表
+      const nextGroup = result.find((g) => g.key === nextType);
+      const anchorIndex = nextGroup.list.findIndex((el) => el.id === nextId);
+      nextGroup.list = nextGroup.list
+        .slice(0, anchorIndex)
+        .concat(moveItem, nextGroup.list.slice(anchorIndex));
+
+      return result;
+    });
+  }, []);
+
+  const onDropToGroup = useCallback((e, { target, data }, type) => {
+    const prevType = data.type,
+      nextType = type,
+      id = data?.id;
+
+    target.classList.remove('groupHovering');
+
+    if (!prevType || !nextType || !id) return;
+
+    setGroups((prevGroups) => {
+      const result = prevGroups.slice();
+
+      // 找到之前的列表和元素
+      const prevGroup = result.find((g) => g.key === prevType);
+      const item = prevGroup.list.find((el) => el.id === id);
+
+      // 从之前的列表中去除元素
+      prevGroup.list = prevGroup.list.filter((el) => el.id !== id);
+
+      // 修改之后的列表
+      const nextGroup = result.find((g) => g.key === nextType);
+      nextGroup.list = nextGroup.list.concat(item);
+
+      return result;
+    });
+  }, []);
+
+  const onDragEnterGroup = useCallback((e, { target }) => {
+    target.classList.add('groupHovering');
+  }, []);
+
+  const onDragLeaveGroup = useCallback((e, { target }) => {
+    target.classList.remove('groupHovering');
+  }, []);
+
+  return (
+    <DropBox
+      className="group"
+      // drop 相关
+      onDrop={(e, extra) => onDropToGroup(e, extra, type)}
+      onDragEnter={onDragEnterGroup}
+      onDragLeave={onDragLeaveGroup}
+    >
+      <Title>{title}</Title>
+
+      {list.map(({ id, content }) => (
+        <DragBox
+          key={id}
+          // drag 相关
+          onDragStart={(e, extra) => onItemDragStart(e, extra, id, type)}
+          onDragEnd={onItemDragEnd}
+          // drop 相关
+          onDragOver={(e, extra) => onDragOverItem(e, extra, id, type)}
+          onDragLeave={(e, extra) => onDragLeaveItem(e, extra, id, type)}
+          onDrop={(e, extra) => onDropToItem(e, extra, id, type)}
+          style={{
+            transition: 'all .2s ease',
+          }}
+        >
+          <div
+            className="content"
+            style={{
+              background: '#fff',
+              border: '1px solid #ededed',
+              borderRadius: 8,
+              padding: 16,
+            }}
+          >
+            {content}
+          </div>
+        </DragBox>
+      ))}
+    </DropBox>
   );
 };

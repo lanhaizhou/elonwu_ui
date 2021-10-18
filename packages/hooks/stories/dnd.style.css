@@ -1,0 +1,31 @@
+.dragging {
+  transition: all 0.12s ease;
+  transform: scale(1, 0);
+  opacity: 0;
+  margin-bottom: calc(-100%);
+}
+
+.hovering {
+  padding-top: 30px;
+}
+/* 
+.hovering,
+.hovering ~ * {
+  transform: translateY(30px);
+} */
+
+.group {
+  width: 100%;
+  display: grid;
+  place-content: flex-start stretch;
+  gap: 12px;
+  background: #f5f5f5;
+  border: 1px solid #ededed;
+  border-radius: 8px;
+  padding: 16px;
+  overflow: auto;
+  transition: all 0.12s ease;
+}
+.groupHovering {
+  padding-bottom: 64px;
+}
