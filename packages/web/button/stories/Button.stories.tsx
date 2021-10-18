@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../src';
 
 export default {
-  title: 'Components/base/Button',
+  title: 'Components/Base/Button',
   component: Button,
 
   // 参数值、参数文档

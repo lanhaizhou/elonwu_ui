@@ -2,7 +2,7 @@ import React from 'react';
 import { Toggle } from '../src';
 
 export default {
-  title: 'Components/base/toggle',
+  title: 'Components/Form/Toggle',
   component: Toggle,
 };
 
