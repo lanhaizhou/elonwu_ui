@@ -55,7 +55,9 @@
     "@elonwu/web-table": "0.0.8",
     "@elonwu/web-tabs": "0.0.2",
     "@elonwu/web-tag": "0.1.2",
-    "@elonwu/web-text": "0.1.2"
+    "@elonwu/web-text": "0.1.2",
+    "@elonwu/web-toggle": "0.0.1",
+    "@elonwu/web-select": "0.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",
