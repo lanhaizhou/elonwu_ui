@@ -1,5 +1,5 @@
 import { SerializedStyles } from '@emotion/cache/node_modules/@emotion/utils';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import SVG from 'react-inlinesvg';
 import tw, { styled, css, TwStyle } from 'twin.macro';
 
@@ -14,6 +14,7 @@ export interface IconContainerProps {
   type?: IconType;
   size?: IconSize | number | undefined;
   round?: boolean;
+  style?: CSSProperties;
 }
 
 export interface IconProps extends IconContainerProps {
