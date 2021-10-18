@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-icon@0.0.7...@elonwu/web-icon@0.0.8) (2021-10-18)
+
+
+### Bug Fixes
+
+* 修改 story 分类 ([68a2f25](https://github.com/ElonWu/elonwu_ui/commit/68a2f25202c5bac641b61692cc3993ffebe61362))
+
+
+
+
+
 ## [0.0.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-icon@0.0.6...@elonwu/web-icon@0.0.7) (2021-09-30)
 
 **Note:** Version bump only for package @elonwu/web-icon
