@@ -82,7 +82,7 @@ export default {
     children: {
       name: 'children',
       description: '按钮文字，可使用其他 ReactElement',
-      type: 'string',
+      // type: 'string',
       defaultValue: 'Elon Button',
       control: { type: 'text' },
       type: { required: true },
