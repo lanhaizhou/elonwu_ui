@@ -13,8 +13,11 @@ export default {
 
 export const PopoverStory = () => {
   const [visible, setVisible] = useState(false);
+
   return (
-    <div>
+    <div style={{ height: 200, overflow: 'auto', border: '1px solid #ededed' }}>
+      <Card style={{ height: 400 }}>This is prev</Card>
+
       <Popover
         visible={visible}
         onChange={setVisible}

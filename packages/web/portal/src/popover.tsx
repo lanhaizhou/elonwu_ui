@@ -16,7 +16,7 @@ import {
 
 import './popover.css';
 
-const { Provider, useContext } = createContext('MediaQuery');
+const { Provider, useContext } = createContext('Popover');
 
 export interface PopoverProps {
   visible?: boolean;

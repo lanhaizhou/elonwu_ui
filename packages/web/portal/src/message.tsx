@@ -11,7 +11,7 @@ import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
 
 import './message.css';
 
-const { Provider, useContext } = createContext('MediaQuery');
+const { Provider, useContext } = createContext('Message');
 
 export interface MessageProps {
   visible?: boolean;
