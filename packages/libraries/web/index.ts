@@ -14,3 +14,4 @@ export * from '@elonwu/web-text';
 export * from '@elonwu/web-portal';
 export * from '@elonwu/web-toggle';
 export * from '@elonwu/web-select';
+export * from '@elonwu/web-loading';
