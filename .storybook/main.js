@@ -54,9 +54,20 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(glb|gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/models/',
+            },
+          },
+        ],
+      },
     );
 
-    config.resolve.extensions.push('.tsx', '.ts', '.less');
+    config.resolve.extensions.push('.tsx', '.ts', '.less', '.glb', '.gltf');
 
     return config;
   },
