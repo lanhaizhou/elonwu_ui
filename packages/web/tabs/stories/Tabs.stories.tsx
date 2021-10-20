@@ -2,7 +2,7 @@ import React from 'react';
 import { Tabs, ITabsProps } from '../index';
 
 export default {
-  title: 'Components/base/Tabs',
+  title: 'Components/Base/Tabs',
   component: Tabs,
   argTypes: {
     defaultActiveKey: {

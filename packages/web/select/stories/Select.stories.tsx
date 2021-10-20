@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from '../src';
 
 export default {
-  title: 'Components/base/select',
+  title: 'Components/Form/Select',
   component: Select,
 };
 

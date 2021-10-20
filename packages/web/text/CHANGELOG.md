@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-text@0.1.2...@elonwu/web-text@0.1.3) (2021-10-18)
+
+
+### Bug Fixes
+
+* 输出 text 类型 ([bdbd779](https://github.com/ElonWu/elonwu_ui/commit/bdbd779a6c7acb8af6dd4226a9672607f6ebf0be))
+
+
+
+
+
 ## [0.1.2](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-text@0.1.1...@elonwu/web-text@0.1.2) (2021-09-30)
 
 **Note:** Version bump only for package @elonwu/web-text

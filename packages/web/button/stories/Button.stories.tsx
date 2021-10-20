@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../src';
 
 export default {
-  title: 'Components/base/Button',
+  title: 'Components/Base/Button',
   component: Button,
 
   // 参数值、参数文档
@@ -82,7 +82,7 @@ export default {
     children: {
       name: 'children',
       description: '按钮文字，可使用其他 ReactElement',
-      type: 'string',
+      // type: 'string',
       defaultValue: 'Elon Button',
       control: { type: 'text' },
       type: { required: true },
