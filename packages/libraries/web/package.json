@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "elonwu web",
   "source": "index.ts",
   "main": "dist/cjs/index.js",
@@ -50,15 +50,15 @@
     "@elonwu/web-form": "0.0.10",
     "@elonwu/web-graph": "0.1.7",
     "@elonwu/web-icon": "0.0.8",
+    "@elonwu/web-loading": "0.0.2",
     "@elonwu/web-menu": "0.0.6",
-    "@elonwu/web-portal": "0.0.8",
+    "@elonwu/web-portal": "0.0.9",
     "@elonwu/web-select": "0.0.2",
     "@elonwu/web-table": "0.0.8",
     "@elonwu/web-tabs": "0.0.2",
     "@elonwu/web-tag": "0.1.2",
     "@elonwu/web-text": "0.1.3",
-    "@elonwu/web-toggle": "0.0.2",
-    "@elonwu/web-loading": "0.0.1"
+    "@elonwu/web-toggle": "0.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",

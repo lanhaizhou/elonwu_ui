@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/hooks@0.1.7...@elonwu/hooks@0.1.8) (2021-10-20)
+
+
+### Features
+
+* loading 组件 ([eac72b8](https://github.com/ElonWu/elonwu_ui/commit/eac72b893be9d8cebb547aecc258f15120d18c30))
+
+
+
+
+
 ## [0.1.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/hooks@0.1.6...@elonwu/hooks@0.1.7) (2021-10-18)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.9...@elonwu/web@0.4.10) (2021-10-20)
+
+
+### Bug Fixes
+
+* web 导出 loading ([ef8ef80](https://github.com/ElonWu/elonwu_ui/commit/ef8ef80892aba4ef30282815459b5dfc23a88300))
+
+
+
+
+
 ## [0.4.9](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.8...@elonwu/web@0.4.9) (2021-10-18)
 
 
