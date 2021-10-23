@@ -13,8 +13,7 @@ export default {
 
 export const LoadingStory = () => {
   const [loading1, setLoading1] = useState(true);
-  const [loading2, setLoading2] = useState(true);
-  const [loading3, setLoading3] = useState(true);
+  const [loading2, setLoading2] = useState(false);
 
   return (
     <div
@@ -28,29 +27,42 @@ export const LoadingStory = () => {
         style={{
           display: 'grid',
           gap: 16,
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          // gridTemplateColumns: 'repeat(2, 1fr)',
         }}
       >
-        <div>
+        <div
+          style={{
+            display: 'grid',
+            gridAutoFlow: 'column',
+            gap: 12,
+            placeContent: 'stretch',
+            placeItems: 'center',
+          }}
+        >
+          <Loading style={{ borderRadius: 8 }} loading={loading2} desc={null}>
+            <div style={{ padding: 12 }}>
+              <Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
+                velit atque non expedita excepturi officiis numquam illo
+                deleniti dignissimos quas sequi laborum eum labore quia.
+                Temporibus neque ratione esse sapiente.
+              </Text>
+            </div>
+          </Loading>
           <Button onClick={() => setLoading2((prev) => !prev)}>
             {loading2 ? '关闭' : '打开'}
           </Button>
-          <Loading style={{ borderRadius: 8 }} loading={loading2} desc={null}>
-            <Card>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                velit atque non expedita excepturi officiis numquam illo
-                deleniti dignissimos quas sequi laborum eum labore quia.
-                Temporibus neque ratione esse sapiente.
-              </Text>
-            </Card>
-          </Loading>
         </div>
-        <div>
-          <Button onClick={() => setLoading3((prev) => !prev)}>
-            {loading3 ? '关闭' : '打开'}
-          </Button>
-          <Loading style={{ borderRadius: 8 }} loading={loading3} desc="加载中">
+        <div
+          style={{
+            display: 'grid',
+            gridAutoFlow: 'column',
+            gap: 12,
+            placeContent: 'stretch',
+            placeItems: 'center',
+          }}
+        >
+          <Loading style={{ borderRadius: 8 }} loading={loading1} desc="加载中">
             <Card>
               <Text>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
@@ -60,6 +72,9 @@ export const LoadingStory = () => {
               </Text>
             </Card>
           </Loading>
+          <Button onClick={() => setLoading1((prev) => !prev)}>
+            {loading1 ? '关闭' : '打开'}
+          </Button>
         </div>
       </div>
     </div>
