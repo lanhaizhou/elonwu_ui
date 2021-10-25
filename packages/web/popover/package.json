@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-popover",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "elonwu web-popover",
   "source": "index.ts",

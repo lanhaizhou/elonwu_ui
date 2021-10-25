@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-menu@0.0.6...@elonwu/web-menu@0.0.7) (2021-10-25)
+
+
+### Bug Fixes
+
+* menu 支持 popover 展示 ([a9964fe](https://github.com/ElonWu/elonwu_ui/commit/a9964fef075ae68e839618b0ed130ace6e6a02ef))
+
+
+
+
+
 ## [0.0.6](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-menu@0.0.5...@elonwu/web-menu@0.0.6) (2021-10-18)
 
 **Note:** Version bump only for package @elonwu/web-menu
