@@ -73,7 +73,8 @@ export const MenuMain: FC<IMenuProps> & {
           Ike: childElement.key as string,
         });
       } else {
-        console.error('子项只能用<Menu.Item> <Menu.SubMenu>标签');
+        // console.error('子项只能用<Menu.Item> <Menu.SubMenu>标签');
+        return child;
       }
     });
     return childrenComponent;
