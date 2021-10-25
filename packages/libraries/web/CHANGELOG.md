@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.12](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.11...@elonwu/web@0.4.12) (2021-10-25)
+
+
+### Bug Fixes
+
+* 将 popover 从 portal 改为 内联 ([1086edf](https://github.com/ElonWu/elonwu_ui/commit/1086edf61457e603394e30055a83e02d3eb77626))
+
+
+
+
+
 ## [0.4.11](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.10...@elonwu/web@0.4.11) (2021-10-23)
 
 

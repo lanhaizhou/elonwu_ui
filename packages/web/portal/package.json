@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-portal",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": false,
   "description": "elonwu web-portal",
   "source": "index.ts",
