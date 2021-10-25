@@ -47,32 +47,64 @@ export const PopoverStroy = () => {
         <div>
           内联的
           <Popover
-            position={position}
+            position="rightBottom"
             trigger={
               <Button
                 onClick={() => setPositionIndex((prev) => (prev + 1) % 12)}
               >
-                trigger {position}
+                menu trigger
               </Button>
             }
             style={{ margin: 8 }}
           >
-            <div
-              style={{
-                width: 280,
-                height: 120,
-                background: '#aaa',
-                borderRadius: 8,
-                display: 'grid',
-                placeContent: 'center',
-              }}
-            >
-              {position}
-            </div>
+            <List />
           </Popover>
           内联的
         </div>
       </div>
     </div>
+  );
+};
+
+const List = () => {
+  const list = useMemo(() => {
+    return [1, 2, 3, 4];
+  }, []);
+
+  return (
+    <ul style={{ listStyle: 'none' }}>
+      {list.map((li) => (
+        <li key={li}>
+          <Popover
+            // position="rightBottom"
+            position="right"
+            trigger={
+              <div
+                style={{
+                  width: 120,
+                  padding: 12,
+                }}
+              >
+                item {li}
+              </div>
+            }
+          >
+            <ul style={{ listStyle: 'none' }}>
+              {list.map((j) => (
+                <li
+                  key={j}
+                  style={{
+                    width: 120,
+                    padding: 12,
+                  }}
+                >
+                  nested-{li}-{j}
+                </li>
+              ))}
+            </ul>
+          </Popover>
+        </li>
+      ))}
+    </ul>
   );
 };
