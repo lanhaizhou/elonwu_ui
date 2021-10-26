@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "elonwu web",
   "source": "index.ts",
   "main": "dist/cjs/index.js",
@@ -54,7 +54,7 @@
     "@elonwu/web-loading": "0.0.3",
     "@elonwu/web-menu": "0.0.8",
     "@elonwu/web-popover": "0.0.3",
-    "@elonwu/web-portal": "0.0.10",
+    "@elonwu/web-portal": "0.0.11",
     "@elonwu/web-scroller": "0.0.3",
     "@elonwu/web-select": "0.0.2",
     "@elonwu/web-table": "0.0.8",
