@@ -6,3 +6,4 @@ export * from './useResize';
 export * from './useStatic';
 export * from './useDrag';
 export * from './useDrop';
+export * from './useMediaQuery';
