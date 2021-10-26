@@ -3,14 +3,10 @@ import React, {
   useState,
   useRef,
   useEffect,
-  useMemo,
   useCallback,
   MutableRefObject,
   ReactNode,
   CSSProperties,
-  EventHandler,
-  UIEventHandler,
-  BaseSyntheticEvent,
 } from 'react';
 
 import { debounce, throttle } from '@elonwu/utils';

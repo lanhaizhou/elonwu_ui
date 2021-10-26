@@ -17,3 +17,4 @@ export * from '@elonwu/web-select';
 export * from '@elonwu/web-loading';
 export * from '@elonwu/web-scroller';
 export * from '@elonwu/web-popover';
+export * from '@elonwu/web-carousel';
