@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-menu",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "description": "elonwu web-menu",
   "source": "index.ts",

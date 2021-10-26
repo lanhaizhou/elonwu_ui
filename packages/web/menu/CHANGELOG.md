@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-menu@0.0.7...@elonwu/web-menu@0.0.8) (2021-10-26)
+
+
+### Bug Fixes
+
+* 修改样式 ([a5f0c6e](https://github.com/ElonWu/elonwu_ui/commit/a5f0c6e6ed5ad47515680ed5dad34c217b4f105d))
+
+
+
+
+
 ## [0.0.7](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-menu@0.0.6...@elonwu/web-menu@0.0.7) (2021-10-25)
 
 

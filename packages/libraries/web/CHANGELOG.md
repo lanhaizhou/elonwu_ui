@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.14](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.13...@elonwu/web@0.4.14) (2021-10-26)
+
+
+### Features
+
+* 新增 carousel ([ffca2b5](https://github.com/ElonWu/elonwu_ui/commit/ffca2b57e44c1a0f012fb361c5e84df51ad48486))
+
+
+
+
+
 ## [0.4.13](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.12...@elonwu/web@0.4.13) (2021-10-25)
 
 **Note:** Version bump only for package @elonwu/web
