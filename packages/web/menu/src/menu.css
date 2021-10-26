@@ -204,6 +204,6 @@
 }
 
 .demon-menu-item.is-active,
-.demon-submenu > .demon-menu-item:hover {
+.demon-menu-item:hover {
   color: #1890ff !important;
 }
