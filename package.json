@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
-    "deploy": "npm run build:storybook && firebase deploy"
+    "deploy": "npm run build:storybook && firebase deploy --only hosting"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
