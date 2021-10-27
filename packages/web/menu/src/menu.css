@@ -187,3 +187,23 @@
 .demon-menu-horizontal .rotate-horizontal {
   transform: rotate(180deg) !important;
 }
+
+/**
+* ElonWu 2021-10-25 4:45pm, 增加 popover 形式的 menuItem
+**/
+.demon-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 40px;
+  padding: 0 8px;
+
+  cursor: pointer;
+  color: #000;
+}
+
+.demon-menu-item.is-active,
+.demon-menu-item:hover {
+  color: #1890ff !important;
+}

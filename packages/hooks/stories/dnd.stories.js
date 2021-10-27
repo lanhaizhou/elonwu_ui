@@ -5,7 +5,7 @@ import { Title, Card } from '@elonwu/web';
 import './dnd.style.css';
 
 export default {
-  title: 'Hooks/DragAndDrop',
+  title: 'Hooks/dnd',
 };
 
 const DropBox = ({

@@ -1,0 +1,22 @@
+.carousel {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel .carouselItem {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel .carouselItem > * {
+  flex-shrink: 0;
+  transition: all 0.45s ease-in-out;
+}

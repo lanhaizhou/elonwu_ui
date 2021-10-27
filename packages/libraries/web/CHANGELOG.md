@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.15](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.14...@elonwu/web@0.4.15) (2021-10-26)
+
+**Note:** Version bump only for package @elonwu/web
+
+
+
+
+
+## [0.4.14](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.13...@elonwu/web@0.4.14) (2021-10-26)
+
+
+### Features
+
+* 新增 carousel ([ffca2b5](https://github.com/ElonWu/elonwu_ui/commit/ffca2b57e44c1a0f012fb361c5e84df51ad48486))
+
+
+
+
+
+## [0.4.13](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.12...@elonwu/web@0.4.13) (2021-10-25)
+
+**Note:** Version bump only for package @elonwu/web
+
+
+
+
+
+## [0.4.12](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.11...@elonwu/web@0.4.12) (2021-10-25)
+
+
+### Bug Fixes
+
+* 将 popover 从 portal 改为 内联 ([1086edf](https://github.com/ElonWu/elonwu_ui/commit/1086edf61457e603394e30055a83e02d3eb77626))
+
+
+
+
+
+## [0.4.11](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.10...@elonwu/web@0.4.11) (2021-10-23)
+
+
+### Features
+
+* 新增吸附滚动组件, 手写和css两种方式 ([ede8d2c](https://github.com/ElonWu/elonwu_ui/commit/ede8d2cae4a29643c431407dc97a8cc2c8a2a961))
+
+
+
+
+
+## [0.4.10](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.9...@elonwu/web@0.4.10) (2021-10-20)
+
+
+### Bug Fixes
+
+* web 导出 loading ([ef8ef80](https://github.com/ElonWu/elonwu_ui/commit/ef8ef80892aba4ef30282815459b5dfc23a88300))
+
+
+
+
+
 ## [0.4.9](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web@0.4.8...@elonwu/web@0.4.9) (2021-10-18)
 
 

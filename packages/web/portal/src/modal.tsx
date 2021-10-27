@@ -10,7 +10,7 @@ import './modal.css';
 
 import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
 
-const { Provider, useContext } = createContext('MediaQuery');
+const { Provider, useContext } = createContext('Modal');
 
 export interface ModalProps {
   visible?: boolean;

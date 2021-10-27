@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.11](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.10...@elonwu/web-portal@0.0.11) (2021-10-26)
+
+**Note:** Version bump only for package @elonwu/web-portal
+
+
+
+
+
+## [0.0.10](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.9...@elonwu/web-portal@0.0.10) (2021-10-25)
+
+
+### Bug Fixes
+
+* 将 popover 从 portal 改为 内联 ([1086edf](https://github.com/ElonWu/elonwu_ui/commit/1086edf61457e603394e30055a83e02d3eb77626))
+
+
+
+
+
+## [0.0.9](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.8...@elonwu/web-portal@0.0.9) (2021-10-20)
+
+
+### Features
+
+* loading 组件 ([eac72b8](https://github.com/ElonWu/elonwu_ui/commit/eac72b893be9d8cebb547aecc258f15120d18c30))
+
+
+
+
+
 ## [0.0.8](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.7...@elonwu/web-portal@0.0.8) (2021-10-18)
 
 **Note:** Version bump only for package @elonwu/web-portal
