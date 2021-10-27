@@ -17,12 +17,12 @@ import './index.less';
 import { Icon, IconSize } from '@elonwu/web-icon';
 import { Text, TextSize } from '@elonwu/web-text';
 
-export type ToggelType = 'radio' | 'checkbox' | 'switch';
+export type ToggleType = 'radio' | 'checkbox' | 'switch';
 
 export type ToggleSize = 'lg' | 'md' | 'sm';
 
 interface IToggleProps {
-  type: ToggelType;
+  type: ToggleType;
   checkedText?: string;
   unCheckedText?: string;
   onChange?: (select: boolean) => void;
@@ -82,7 +82,7 @@ export const Toggle: FC<IToggleProps> = (props) => {
     );
   };
 
-  const render = (type: ToggelType, size: ToggleSize | number | undefined) => {
+  const render = (type: ToggleType, size: ToggleSize | number | undefined) => {
     if (type === 'radio' || type === 'checkbox') {
       return (
         <>
