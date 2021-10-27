@@ -41,7 +41,8 @@ export type Position =
   | 'bottomRight'
   | 'rightTop'
   | 'right'
-  | 'rightBottom';
+  | 'rightBottom'
+  | 'cover';
 
 export interface Offset {
   x?: number;
@@ -198,17 +199,19 @@ export const usePortal = ({
   /********************
    * 内容
    **/
-  const anchorPosition = useAnchorPosition({
-    position,
-    offset,
-    ref: anchorRef || triggerRef,
-  });
 
   useEffect(() => {
     if (visible) {
       const overlayContainer = overlayRef.current;
 
       const contentId: string = `content-container-${Date.now()}`;
+
+      const anchorPosition = calcAnchorPosition({
+        position,
+        offset,
+        ref: anchorRef || triggerRef,
+      });
+
       const contentContainer = React.createElement(
         'div',
         {
@@ -224,7 +227,7 @@ export const usePortal = ({
     } else {
       setPortal(null);
     }
-  }, [visible, content, contentStyle, anchorPosition]);
+  }, [visible, content, contentStyle]);
   /**
    * 内容
    ********************/
@@ -279,7 +282,7 @@ export const usePortal = ({
   };
 };
 
-const useAnchorPosition = ({
+const calcAnchorPosition = ({
   position,
   ref,
   offset,
@@ -288,30 +291,35 @@ const useAnchorPosition = ({
   ref?: MutableRefObject<HTMLElement | undefined>;
   offset?: Offset;
 }): CSSProperties | undefined => {
-  return useMemo(() => {
-    if (!position) return;
+  if (!position) return;
 
-    let anchorPosition: CSSProperties = { position: 'absolute' },
-      offsetX = offset?.x || 0,
-      offsetY = offset?.y || 0;
+  let anchorPosition: CSSProperties = { position: 'absolute' },
+    offsetX = offset?.x || 0,
+    offsetY = offset?.y || 0;
 
-    const { top, left, width, height } = (
-      ref?.current || document.body
-    ).getBoundingClientRect();
+  const { top, left, width, height } = (
+    ref?.current || document.body
+  ).getBoundingClientRect();
 
-    switch (position) {
-      case 'bottom':
-        anchorPosition.left = left + width / 2;
-        anchorPosition.top = top + height + offsetY;
-        break;
+  switch (position) {
+    case 'cover':
+      anchorPosition.left = left;
+      anchorPosition.top = top;
+      anchorPosition.width = width;
+      anchorPosition.height = height;
+      break;
 
-      case 'bottomLeft':
-      default:
-        anchorPosition.left = left;
-        anchorPosition.top = top + height + offsetY;
-        break;
-    }
+    case 'bottom':
+      anchorPosition.left = left + width / 2;
+      anchorPosition.top = top + height + offsetY;
+      break;
 
-    return anchorPosition;
-  }, [position, ref, offset]);
+    case 'bottomLeft':
+    default:
+      anchorPosition.left = left;
+      anchorPosition.top = top + height + offsetY;
+      break;
+  }
+
+  return anchorPosition;
 };

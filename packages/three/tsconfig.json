@@ -1,4 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src", "./types"]
+  "include": ["./src", "./types"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "three/examples/jsm/libs/dat.gui.module": ["types/dat.gui"]
+    }
+  }
 }

@@ -41,6 +41,21 @@ export default {
         labels: { horizontal: '水平', vertical: '垂直' },
       },
     },
+
+    popover: {
+      name: 'popover',
+      description: '是否通过 popover 展示',
+      defaultValue: true,
+      control: { type: 'boolean' },
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: true,
+        },
+      },
+    },
     onSelect: {
       name: 'onSelect',
       description: '被选中时调用',

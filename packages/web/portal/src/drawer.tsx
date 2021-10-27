@@ -9,7 +9,7 @@ import React, {
 import { createContext, TriggerEvent, usePortal } from '@elonwu/hooks';
 import './drawer.css';
 
-const { Provider, useContext } = createContext('MediaQuery');
+const { Provider, useContext } = createContext('Drawer');
 
 export interface DrawerProps {
   visible?: boolean;
