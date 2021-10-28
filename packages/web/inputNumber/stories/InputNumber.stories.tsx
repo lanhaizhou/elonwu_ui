@@ -7,7 +7,7 @@ export default {
 };
 
 export const InputNumberStory = () => {
-  const onChange = (value) => {
+  const onChange = (value: any) => {
     console.log(value);
   };
 
