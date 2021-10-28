@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web",
-  "version": "0.4.15",
+  "version": "0.4.16",
   "description": "elonwu web",
   "source": "index.ts",
   "main": "dist/cjs/index.js",
@@ -44,8 +44,10 @@
   "dependencies": {
     "@elonwu/web-braft": "0.2.1",
     "@elonwu/web-button": "0.0.6",
+    "@elonwu/web-calendar": "0.0.2",
     "@elonwu/web-card": "0.0.4",
     "@elonwu/web-carousel": "0.0.2",
+    "@elonwu/web-cascader": "0.0.2",
     "@elonwu/web-chart": "0.2.8",
     "@elonwu/web-empty": "0.0.8",
     "@elonwu/web-form": "0.0.10",
@@ -53,15 +55,15 @@
     "@elonwu/web-icon": "0.0.8",
     "@elonwu/web-loading": "0.0.3",
     "@elonwu/web-menu": "0.0.8",
-    "@elonwu/web-popover": "0.0.3",
-    "@elonwu/web-portal": "0.0.11",
+    "@elonwu/web-popover": "0.0.4",
+    "@elonwu/web-portal": "0.0.12",
     "@elonwu/web-scroller": "0.0.3",
     "@elonwu/web-select": "0.0.2",
     "@elonwu/web-table": "0.0.8",
     "@elonwu/web-tabs": "0.0.2",
     "@elonwu/web-tag": "0.1.2",
     "@elonwu/web-text": "0.1.3",
-    "@elonwu/web-toggle": "0.0.2"
+    "@elonwu/web-toggle": "0.0.3"
   },
   "peerDependencies": {
     "react": "^17.0.2",

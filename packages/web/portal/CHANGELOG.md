@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.12](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.11...@elonwu/web-portal@0.0.12) (2021-10-28)
+
+**Note:** Version bump only for package @elonwu/web-portal
+
+
+
+
+
 ## [0.0.11](https://github.com/ElonWu/elonwu_ui/compare/@elonwu/web-portal@0.0.10...@elonwu/web-portal@0.0.11) (2021-10-26)
 
 **Note:** Version bump only for package @elonwu/web-portal
