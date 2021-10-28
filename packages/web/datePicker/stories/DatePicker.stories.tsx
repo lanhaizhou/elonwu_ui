@@ -7,18 +7,20 @@ export default {
 };
 
 export const DatePickerStory = () => {
-  const onChange = (date: any) => {};
+  const onChange = (date: any) => {
+    console.log('date', date);
+  };
 
   return (
     <div style={{ width: 200 }}>
       日：
-      <DatePicker />
+      <DatePicker onChange={onChange} />
       月：
-      <DatePicker picker="month" />
+      <DatePicker picker="month" onChange={onChange} />
       年：
-      <DatePicker picker="year" />
+      <DatePicker picker="year" onChange={onChange} />
       区间：
-      <DatePicker selectsRange />
+      <DatePicker selectsRange onChange={onChange} />
     </div>
   );
 };

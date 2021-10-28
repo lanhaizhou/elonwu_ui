@@ -33,6 +33,8 @@ export const DatePicker: FC<IReactDatePickerProps> = (props) => {
 
   const onChange = (update: any) => {
     selectsRange ? setDateRange(update) : setDate(update);
+    if (showMonthYearPicker) update = new Date(update).getMonth() + 1;
+    if (showYearPicker) update = new Date(update).getFullYear();
     propsOnchange && propsOnchange(update);
   };
 
