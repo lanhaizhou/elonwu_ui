@@ -1,8 +1,8 @@
 {
-  "name": "@elonwu/web-datePicker",
+  "name": "@elonwu/web-inputNumber",
   "version": "0.0.1",
   "private": false,
-  "description": "elonwu web-datePicker",
+  "description": "elonwu web-inputNumber",
   "source": "index.ts",
   "types": "dist/lib/index.d.ts",
   "main": "dist/cjs/index.js",
@@ -22,7 +22,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ElonWu/elonwu_ui.git",
-    "directory": "packages/web/datePicker"
+    "directory": "packages/web/inputNumber"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
@@ -49,7 +49,7 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "react-datepicker": "^4.3.0",
+    "rc-input-number": "^7.3.3",
     "twin.macro": "^2.7.0"
   },
   "devDependencies": {
