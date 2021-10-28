@@ -57,26 +57,22 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
         let hover = hoveringDay && mnt.isSame(hoveringDay, 'day');
 
         let isStart = startDay && mnt.isSame(startDay, 'day');
-        const isEnd = endDay && mnt.isSame(endDay, 'day');
+        let isEnd = endDay && mnt.isSame(endDay, 'day');
 
         let isBetween = false,
-          active = false;
+          active = Boolean(isStart || isEnd);
 
         if (startDay && endDay) {
           isBetween = mnt.isBetween(startDay, endDay);
-          active = Boolean(isStart || isEnd);
         } else if (startDay && hoveringDay) {
-          // hover 时，修改 start 的样式
-          if (isStart) {
-            isStart = false;
-            hover = true;
-          }
-
           const [prev, next] = hoveringDay.isBefore(startDay)
             ? [hoveringDay, startDay]
             : [startDay, hoveringDay];
 
           isBetween = mnt.isBetween(prev, next);
+
+          isStart = prev && mnt.isSame(prev, 'day');
+          isEnd = next && mnt.isSame(next, 'day');
         }
 
         const style = {
