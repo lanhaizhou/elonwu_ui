@@ -7,3 +7,5 @@ export * from './useStatic';
 export * from './useDrag';
 export * from './useDrop';
 export * from './useMediaQuery';
+export * from './useGsap';
+export * from './useAnim';

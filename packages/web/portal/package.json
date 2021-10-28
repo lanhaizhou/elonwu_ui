@@ -1,6 +1,6 @@
 {
   "name": "@elonwu/web-portal",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "private": false,
   "description": "elonwu web-portal",
   "source": "index.ts",
@@ -47,7 +47,7 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@elonwu/hooks": "0.1.9",
+    "@elonwu/hooks": "0.1.10",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "twin.macro": "^2.7.0"
